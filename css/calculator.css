@@ -18,19 +18,20 @@
     --spacing: 6px;
 }
 
-
-#calculator {
-    min-width: 300px;
-    /* You can change this to scale the width of the calculator */
-    min-height: 400px;
-    /* You can change this to scale the height of the calculator */
+.device {
     background-color: #525150;
-    /* Dark grey background for calculator body */
     box-sizing: border-box;
     border-radius: 10px;
     font-size: 0.8em;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     display: block;
+}
+
+#calculator {
+    min-width: 300px;
+    min-height: 400px;
+    width: 300px;
+    height: 400px;
 }
 
 #display {
@@ -62,11 +63,7 @@
     /* Adjusted dynamically based on the calculator's height */
 }
 
-#calc_row1,
-#calc_row2,
-#calc_row3,
-#calc_row4,
-#calc_row5 {
+.row_button {
     height: 20%;
     /* Dynamically calculated based on remaining space after display */
     display: flex;

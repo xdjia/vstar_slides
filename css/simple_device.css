@@ -1,18 +1,23 @@
+#div_simple {
+    display: flex !important;
+    justify-content: center;
+}
 
 #simple_device {
-    width: 200px;
-    height: 200px;
+    max-height: 200px;
+    max-width: 100px;
     background-color: #525150;
-
 }
 
 #simple_display {
+    width: 100%;
     height: 40%;
 }
 
 .simple_row {
     height: 30%;
     display: flex;
+    width: 100%;
 }
 
 .simple_row > .button {
