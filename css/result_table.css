@@ -1,0 +1,86 @@
+/* General styles for the table */
+
+#div_result_table {
+    padding-left: 5%;
+}
+
+
+#result_table {
+    min-width: 400px;
+    /* Full-width to expand the layout */
+    border-collapse: collapse;
+    /* Collapse borders into a single border */
+    margin: 20px 0;
+    /* Add some margin around the table */
+    font-family: Arial, sans-serif;
+    /* Use a neat, readable font */
+    font-size: xx-large;
+}
+
+#result_table>thead>tr>td:nth-child(1) {
+    text-align: left;
+}
+
+#result_table>thead>tr>td:nth-child(2) {
+    text-align: right;
+}
+
+#result_table>tbody>tr>td:nth-child(1) {
+    text-align: left;
+}
+
+#result_table>tbody>tr>td:nth-child(2) {
+    text-align: right;
+}
+
+/* Header styles */
+#result_table th {
+    background-color: #4CAF50;
+    /* Green background for headers */
+    color: white;
+    /* White text color */
+    padding: 12px 15px;
+    /* Padding around the text */
+    border-bottom: 1px solid #ddd;
+    /* Bottom border for headers */
+}
+
+/* Row styles, using :nth-child for alternating row colors */
+#result_table tr:nth-child(even) {
+    background-color: #f2f2f2;
+    /* Light grey background for even rows */
+}
+
+#result_table tr:nth-child(odd) {
+    background-color: #ffffff;
+    /* White background for odd rows */
+}
+
+/* Cell styles */
+#result_table td {
+    padding: 10px 15px;
+    /* Padding in cells */
+    border-bottom: 1px solid #ddd;
+    /* Bottom border for each cell */
+}
+
+/* Hover effect for rows */
+#result_table tr:hover {
+    background-color: #ddd;
+    /* Add a hover effect for rows */
+}
+
+/* Add styling for cell that indicates it's editable or highlighted */
+#result_table td.editable {
+    background-color: #FFF8DC;
+    /* Light yellow background for emphasis */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+}
+
+.fragment.current-visible.visible:not(.current-fragment) {
+    display: none;
+    height: 0px;
+    line-height: 0px;
+    font-size: 0px;
+}

@@ -1,0 +1,27 @@
+
+#simple_device {
+    width: 200px;
+    height: 200px;
+    background-color: #525150;
+
+}
+
+#simple_display {
+    height: 40%;
+}
+
+.simple_row {
+    height: 30%;
+    display: flex;
+}
+
+.simple_row > .button {
+    width: 50%;
+    background-color: #818384;
+
+}
+
+#simple_AC, #simple_RUN {
+    background-color: #FF9E0B;
+    /* Orange color for function buttons */
+}

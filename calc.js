@@ -7,7 +7,7 @@ document.querySelectorAll('.button').forEach(button => {
         const value = this.textContent;
         switch (value) {
             case 'AC':
-                display.textContent = '0';
+                display.textContent = '';
                 break;
             case '±':
                 display.textContent = -parseFloat(display.textContent);
@@ -52,7 +52,7 @@ function expressionToWords(expr) {
         '8': 'eight', '9': 'nine'
     };
     const operatorWords = {
-        '+': 'add', '-': 'substract', '×': 'multiply', '÷': 'divide', '%': 'percent', '.': 'dot', '=': 'equal', 'C': 'AC'
+        '+': 'add', '-': 'substract', '×': 'multiply', '/': 'divide', '%': 'percent', '.': 'dot', '=': 'equal', 'C': 'AC'
     };
 
     let words = [];
@@ -73,18 +73,23 @@ function expressionToWords(expr) {
 
 function simulate_click() {
 
+    const display = document.getElementById('display_screen');
+
     let myID = (isAnimating + 1) % 10;  // reset the counter
     isAnimating = myID;
 
     let exprList = [
-        "1+=",
+        "C1/0=",
+        "C1+=",
         "C1+1=",
         "C1+1+1=",
         "C1+1+1+1=",
-        "C1+1+1+1+1=",
     ]
-    
+
     let buttonList = exprList.map((expr => expressionToWords(expr)));
+
+    let result_table = document.querySelector("#result_table > tbody");
+    result_table.remove()
 
     function clickButton(ilist, i) {
         let blist = buttonList[ilist]
@@ -101,6 +106,13 @@ function simulate_click() {
             document.getElementById(blist[i]).dispatchEvent(event); // Dispatch the mousedown event
 
             setTimeout(() => clickButton(ilist, i + 1), 500); // Schedule the next click after 1 second
+
+            // Update Result Table
+            if (i < blist.length - 1)
+                update_my_table("result_table", ilist, 0, display.textContent)
+            else
+                update_my_table("result_table", ilist, 1, display.textContent)
+
         } else {
             if (ilist + 1 < buttonList.length)
                 setTimeout(() => { clickButton(ilist + 1, 0) }, 1000)
@@ -114,3 +126,33 @@ function simulate_click() {
     }, 1000)
 
 }
+
+function update_my_table(table_id, row, col, value) {
+    let table = document.getElementById(table_id); // Get the table element
+    let tbody = table.getElementsByTagName("tbody")[0]; // Get the tbody
+  
+    // Ensure the tbody exists
+    if (!tbody) {
+      tbody = document.createElement("tbody");
+      table.appendChild(tbody);
+    }
+  
+    // Check if the specified row exists
+    while (tbody.rows.length <= row) {
+      let newRow = tbody.insertRow(); // Create new row at the end of the table
+      // Initialize new cells for existing columns
+      for (let i = 0; i < table.rows[0].cells.length; i++) {
+        newRow.insertCell(i).innerHTML = ""; // Create empty cells
+      }
+    }
+  
+    // Check if the specified column exists
+    let existingRow = tbody.rows[row];
+    while (existingRow.cells.length <= col) {
+      existingRow.insertCell(); // Create new cell at the end of the row
+    }
+  
+    // Update the specified cell
+    existingRow.cells[col].innerHTML = value;
+  }
+  
