@@ -1,129 +1,134 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/white.css">
-		<link rel="stylesheet" href="css/style.css">
+	<title>reveal.js</title>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>
-						<h3>V-Star: Learning Visibly Pushdown Grammars from Program Inputs</h3>
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/white.css">
+	<link rel="stylesheet" href="css/style.css">
+	<!-- <link rel="stylesheet" href="css/ani_button.css"> -->
 
-						<div id="authors_info">
-							<div><b>Xiaodong Jia</b>* and <b>Gang Tan</b></div>
-							<div>The Pennsylvania State University</div>
-							<div>Accepted by PLDI 2024  </div>
-							<div>Presented at NJPLS 2024</div>
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h3>V-Star: Learning Visibly Pushdown Grammars from Program Inputs</h3>
+
+				<div id="authors_info">
+					<div><b>Xiaodong Jia</b>* and <b>Gang Tan</b></div>
+					<div>The Pennsylvania State University</div>
+					<div>Accepted by PLDI 2024 </div>
+					<div>Presented at NJPLS 2024</div>
+				</div>
+			</section>
+			<section>
+				<div id="calculator">
+					<div id="display">
+						<div id="display_screen" class="number">0</div>
+					</div>
+					<div id="calc_body">
+						<div id="calc_row1">
+							<div class="button" id="AC">AC</div>
+							<div class="button" id="plus-minus">±</div>
+							<div class="button" id="percent">%</div>
+							<div class="button" id="divide">÷</div>
 						</div>
-				</section>
-				<section>
-					<div id="calculator">
-						<div id="display">
-							<div class="number">123</div>
+						<!-- More buttons follow -->
+						<div id="calc_row2">
+							<div class="button number" id="seven">7</div>
+							<div class="button number" id="eight">8</div>
+							<div class="button number" id="nine">9</div>
+							<div class="button" id="multiply">×</div>
 						</div>
-						<div id="calc_body">
-							<div id="calc_row1">
-								<div class="button" id="AC">AC</div>
-								<div class="button" id="plus-minus">±</div>
-								<div class="button" id="percent">%</div>
-								<div class="button" id="divide">÷</div>
-							</div>
-							<!-- More buttons follow -->
-							<div id="calc_row2">
-								<div class="button number" id="seven">7</div>
-								<div class="button number" id="eight">8</div>
-								<div class="button number" id="nine">9</div>
-								<div class="button" id="multiply">×</div>
-							</div>
-							<div id="calc_row3">
-								<div class="button number" id="four">4</div>
-								<div class="button number" id="five">5</div>
-								<div class="button number" id="six">6</div>
-								<div class="button" id="subtract">-</div>
-							</div>
-							<div id="calc_row4">
-								<div class="button number" id="one">1</div>
-								<div class="button number" id="two">2</div>
-								<div class="button number" id="three">3</div>
-								<div class="button" id="add">+</div>
-							</div>
-							<div id="calc_row4">
-								<div class="button number" id="zero">0</div>
-								<div class="button" id="dot">.</div>
-								<div class="button" id="equal">=</div>
-							</div>
+						<div id="calc_row3">
+							<div class="button number" id="four">4</div>
+							<div class="button number" id="five">5</div>
+							<div class="button number" id="six">6</div>
+							<div class="button" id="subtract">-</div>
+						</div>
+						<div id="calc_row4">
+							<div class="button number" id="one">1</div>
+							<div class="button number" id="two">2</div>
+							<div class="button number" id="three">3</div>
+							<div class="button" id="add">+</div>
+						</div>
+						<div id="calc_row5">
+							<div class="button number" id="zero">0</div>
+							<div class="button" id="dot">.</div>
+							<div class="button" id="equal">=</div>
 						</div>
 					</div>
-				</section>
-				<section>Slide 2</section>
-			</div>
+				</div>
+			</section>
+			<section>
+			</section>
 		</div>
+	</div>
 
-		<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+	<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<!-- my calculator actions -->
+	<script src="calc.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
 
-			anime({
-					targets: '#rotatingSquare',
-					rotate: '1turn',
-					easing: 'linear',
-					duration: 2000,
-					loop: true
-				});
+		anime({
+			targets: '#rotatingSquare',
+			rotate: '1turn',
+			easing: 'linear',
+			duration: 2000,
+			loop: true
+		});
 
-
-			function simulateButtonPress() {
-				const buttons = document.querySelectorAll('#calc_body .button');
-				let presses = 0;
-				const intervalId = setInterval(() => {
-					if (presses >= 20) {
-						clearInterval(intervalId);
-						return;
-					}
-					
-					const randomIndex = Math.floor(Math.random() * buttons.length);
-					const button = buttons[randomIndex];
-
-					// Trigger the animation
-					button.style.animation = 'none'; // Reset animation to allow it to replay
-					setTimeout(() => { // Timeout to allow the 'none' style to take effect
-						button.style.animation = 'click-animation 0.5s ease';
-					}, 0.5);
-
-					presses++;
-				}, 300); // Executes every 300 milliseconds
-			}
-
-			Reveal.on('slidechanged', function(event) {
-				// Check if the current slide is the first slide
-				if (event.indexh === 0) {  // indexh is 0 for the first slide
-					let calc = document.querySelector("#calculator");
-					simulateButtonPress();
+		function simulateButtonPress() {
+			const buttons = document.querySelectorAll('#calc_body .button');
+			let presses = 0;
+			const intervalId = setInterval(() => {
+				if (presses >= 20) {
+					clearInterval(intervalId);
+					return;
 				}
-			});
-		</script>
-	</body>
+
+				const randomIndex = Math.floor(Math.random() * buttons.length);
+				const button = buttons[randomIndex];
+
+				// Trigger the animation
+				button.style.animation = 'none'; // Reset animation to allow it to replay
+				setTimeout(() => { // Timeout to allow the 'none' style to take effect
+					button.style.animation = 'click-animation 0.5s ease';
+				}, 0.5);
+
+				presses++;
+			}, 300); // Executes every 300 milliseconds
+		}
+
+		Reveal.on('slidechanged', function (event) {
+			if (event.indexh === 1) {
+				simulate_click();
+			}
+		});
+
+	</script>
+</body>
+
 </html>

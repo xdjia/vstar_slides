@@ -1,0 +1,20 @@
+@keyframes buttonClickAnimation {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.8); }
+    100% { transform: scale(1); }
+}
+
+#animateButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: blue;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+#animateButton.animate {
+    animation: buttonClickAnimation 0.2s ease;
+}

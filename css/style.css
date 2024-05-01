@@ -116,9 +116,12 @@
     0% {
         background-color: initial;
     }
+
     50% {
-        background-color: #ffffff; /* Adjust this color to how light you want the button to appear */
+        background-color: #ffffff;
+        /* Adjust this color to how light you want the button to appear */
     }
+
     100% {
         background-color: initial;
     }
@@ -126,4 +129,11 @@
 
 .button {
     animation-fill-mode: forwards;
+}
+
+.button.active {
+    /* background-color: #ccc; */
+    /* Light up when pressed */
+    /* color: #333; */
+    animation: click-animation 0.2s ease;
 }
