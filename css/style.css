@@ -1,0 +1,129 @@
+#rotatingSquare {
+    width: 100px;
+    height: 100px;
+    background-color: #4CAF50;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+#authors_info {
+    text-align: right;
+    font-size: x-large;
+}
+
+.button#divide,
+.button#multiply,
+.button#subtract,
+.button#add,
+.button#equal {
+    background-color: #FF9E0B;
+    /* Orange color for function buttons */
+}
+
+.button#AC,
+.button#plus-minus,
+.button#percent {
+    background-color: #666666;
+}
+
+:root {
+    --spacing: 6px;
+}
+
+
+#calculator {
+    width: 300px;
+    /* You can change this to scale the width of the calculator */
+    height: 400px;
+    /* You can change this to scale the height of the calculator */
+    background-color: #525150;
+    /* Dark grey background for calculator body */
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-size: 0.8em;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: block;
+}
+
+#display {
+    position: relative;
+    height: 20%;
+    /* Adjusted dynamically based on the calculator's height */
+    color: white;
+    text-align: right;
+    border-top-left-radius: 10px;
+    /* Adjust the radius as needed */
+    border-top-right-radius: 10px;
+    /* Adjust the radius as needed */
+}
+
+#display .number {
+    font-size: 1.2em;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding-right: 10px;
+    /* Provides a little space from the edge */
+    padding-bottom: 5px;
+    /* Provides a little vertical space from the bottom */
+}
+
+
+#calc_body {
+    height: 80%;
+    /* Adjusted dynamically based on the calculator's height */
+}
+
+#calc_row1,
+#calc_row2,
+#calc_row3,
+#calc_row4,
+#calc_row5 {
+    height: 20%;
+    /* Dynamically calculated based on remaining space after display */
+    display: flex;
+}
+
+.button {
+    width: 25%;
+    padding: 2px;
+    margin: 1px;
+    display: flex;
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+    color: white;
+    background-color: #818384;
+    /* Orange color for function buttons */
+}
+
+.button#zero {
+    width: calc(50% + var(--spacing));
+    border-bottom-left-radius: 10px;
+    /* Adjust the radius as needed */
+}
+
+.button#equal {
+    border-bottom-right-radius: 10px;
+    /* Adjust the radius as needed */
+}
+
+@keyframes click-animation {
+    0% {
+        background-color: initial;
+    }
+    50% {
+        background-color: #ffffff; /* Adjust this color to how light you want the button to appear */
+    }
+    100% {
+        background-color: initial;
+    }
+}
+
+.button {
+    animation-fill-mode: forwards;
+}
