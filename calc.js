@@ -52,7 +52,7 @@ function expressionToWords(expr) {
         '8': 'eight', '9': 'nine'
     };
     const operatorWords = {
-        '+': 'add', '-': 'substract', '×': 'multiply', '÷': 'divide', '%': 'percent', '.': 'dot', '=': 'equal'
+        '+': 'add', '-': 'substract', '×': 'multiply', '÷': 'divide', '%': 'percent', '.': 'dot', '=': 'equal', 'C': 'AC'
     };
 
     let words = [];
@@ -76,25 +76,41 @@ function simulate_click() {
     let myID = (isAnimating + 1) % 10;  // reset the counter
     isAnimating = myID;
 
-    let buttonList = expressionToWords("1+1=");
+    let exprList = [
+        "1+=",
+        "C1+1=",
+        "C1+1+1=",
+        "C1+1+1+1=",
+        "C1+1+1+1+1=",
+    ]
+    
+    let buttonList = exprList.map((expr => expressionToWords(expr)));
 
-    function clickButton(i) {
+    function clickButton(ilist, i) {
+        let blist = buttonList[ilist]
+        // console.log(ilist, blist, i)
+
         if (isAnimating !== myID) return;
 
-        if (i < buttonList.length) { // Check if we've done less than 10 clicks
+        if (i < blist.length) {
             let event = new MouseEvent('click', {
                 bubbles: true,
                 cancelable: true
             });
 
-            document.getElementById(buttonList[i]).dispatchEvent(event); // Dispatch the mousedown event
+            document.getElementById(blist[i]).dispatchEvent(event); // Dispatch the mousedown event
 
-            setTimeout(() => clickButton(i + 1), 500); // Schedule the next click after 1 second
+            setTimeout(() => clickButton(ilist, i + 1), 500); // Schedule the next click after 1 second
+        } else {
+            if (ilist + 1 < buttonList.length)
+                setTimeout(() => { clickButton(ilist + 1, 0) }, 1000)
         }
     }
 
     let display_screen = document.getElementById('display_screen');
     display_screen.textContent = '0';
-    setTimeout(() => clickButton(0), 1000)
+    setTimeout(() => {
+        clickButton(0, 0)
+    }, 1000)
 
 }
