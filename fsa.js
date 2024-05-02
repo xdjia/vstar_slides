@@ -49,7 +49,6 @@ function initFSM() {
         text.setAttribute('x', state.x);
         text.setAttribute('y', state.y);
         text.textContent = state.label;
-        text.setAttribute('font-size', '12px');
         text.setAttribute('text-anchor', 'middle');
 
         svg.appendChild(circle);
@@ -67,6 +66,7 @@ function initFSM() {
         line.setAttribute('y2', point2.y);
         line.setAttribute('stroke', 'black');
         line.setAttribute('marker-end', 'url(#arrowhead)');
+        line.setAttribute('text-anchor', 'hehe');
         svg.appendChild(line);
     };
 
