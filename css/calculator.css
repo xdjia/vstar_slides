@@ -34,7 +34,7 @@
     height: 400px;
 }
 
-#display {
+.display_screen {
     position: relative;
     height: 20%;
     /* Adjusted dynamically based on the calculator's height */
@@ -46,7 +46,7 @@
     /* Adjust the radius as needed */
 }
 
-#display .number {
+.display_screen .number {
     font-size: 1.2em;
     position: absolute;
     bottom: 0;

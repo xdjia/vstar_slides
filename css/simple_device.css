@@ -1,32 +1,41 @@
 #div_simple {
-    display: flex !important;
-    justify-content: center;
+    display: flex;
+    font-size: 0.8em;
 }
 
-#simple_device {
-    max-height: 200px;
-    max-width: 100px;
+#simpleDevice {
+    width: 150px;
+    height: 200px;
     background-color: #525150;
 }
 
 #simple_display {
     width: 100%;
-    height: 40%;
+    height: 35%;
 }
 
-.simple_row {
-    height: 30%;
-    display: flex;
-    width: 100%;
+#simpleDevice>.row_button {
+    height: 32.5%;
 }
 
-.simple_row > .button {
+#simpleDevice>.row_button>.button {
     width: 50%;
     background-color: #818384;
-
 }
 
-#simple_AC, #simple_RUN {
+#simpleDevice>.row_button>#simple_AC {
+    background-color: #666666;
+}
+
+#simpleDevice>.row_button>#simple_RUN {
     background-color: #FF9E0B;
     /* Orange color for function buttons */
+}
+
+#simple_RUN {
+    border-bottom-right-radius: 10px;
+}
+
+#simple_one {
+    border-bottom-left-radius: 10px;
 }

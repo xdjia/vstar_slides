@@ -1,4 +1,4 @@
-document.querySelectorAll('.button').forEach(button => {
+document.querySelectorAll('#calc_body > .row_button > .button').forEach(button => {
     button.addEventListener('click', function () {
         button.classList.add('active');
         setInterval(() => { button.classList.remove('active') }, 300);
@@ -80,10 +80,10 @@ function simulate_click() {
 
     let exprList = [
         "C1/0=",
-        "C1+=",
-        "C1+1=",
-        "C1+1+1=",
-        "C1+1+1+1=",
+        "C1/=",
+        "C1/1=",
+        "C1/1/1=",
+        "C1/1/1/1=",
     ]
 
     let buttonList = exprList.map((expr => expressionToWords(expr)));

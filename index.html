@@ -14,6 +14,8 @@
 	<link rel="stylesheet" href="css/result_table.css">
 	<link rel="stylesheet" href="css/calculator.css">
 	<link rel="stylesheet" href="css/simple_device.css">
+	<link rel="stylesheet" href="css/fragment.css">
+	<link rel="stylesheet" href="css/fsa.css">
 
 	<!-- <link rel="stylesheet" href="css/ani_button.css"> -->
 
@@ -36,7 +38,7 @@
 			<section>
 				<div style="display: flex;">
 					<div id="calculator" class="device">
-						<div id="display">
+						<div id="display" class="display_screen">
 							<div id="display_screen" class="number">0</div>
 						</div>
 						<div id="calc_body">
@@ -72,35 +74,89 @@
 						</div>
 					</div>
 					<div id="div_result_table">
-						<div class="fragment current-visible">
-							<table id="result_table">
-								<thead>
-									<tr>
-										<td>Input</td>
-										<td>=</td>
-									</tr>
-								</thead>
-								<tbody>
-									<!-- <tr><td></td><td></td></tr> -->
-								</tbody>
-							</table>
-						</div>
-						<div class="fragment">
-							<p>Which inputs do not trigger errors?</p>
-						</div>
-						<div class="fragment">
-							<p>Isn't this obvious?</p>
-						</div>
-						<div id="div_simple" class="fragment">
-							<div id="simpleDevice" class="device">
-								<div id="simple_display" class="display">0</div>
-								<div class="row_button">
-									<div class="button" id="simple_AC">AC</div>
-									<div class="button" id="simple_RUN">RUN</div>
+						<div class="r-stack">
+							<div class="fragment fade-in-then-out" data-fragment-index="1">
+								<table id="result_table" class="result_table">
+									<thead>
+										<tr>
+											<td>Input</td>
+											<td>=</td>
+										</tr>
+									</thead>
+									<tbody>
+										<!-- <tr><td></td><td></td></tr> -->
+									</tbody>
+								</table>
+							</div>
+							<div class="fragment fade-in-then-out" data-fragment-index="2">
+								Which inputs do not trigger error?
+							</div>
+							<div class="fragment fade-in-then-out" data-fragment-index="3">
+								"Wait, isn't this obvious?"
+							</div>
+							<div class="fragment fade-in-then-out" data-fragment-index="4">
+								OK, how about this device?
+							</div>
+							<div class="fragment fade-out" data-fragment-index="8">
+								<div id="div_simple">
+									<div id="simpleDevice" class="fragment fade-in device" data-fragment-index="5">
+										<div id="simple_display" class="display_screen">
+											<div class="number">
+												0
+											</div>
+										</div>
+										<div class="row_button">
+											<div class="button number" id="simple_zero">0</div>
+											<div class="button" id="simple_AC">AC</div>
+										</div>
+										<div class="row_button">
+											<div class="button number" id="simple_one">1</div>
+											<div class="button" id="simple_RUN">RUN</div>
+										</div>
+									</div>
+									<div id="div_result_table2" class="fragment fade-in" data-fragment-index="6">
+										<table class="result_table">
+											<thead>
+												<tr>
+													<td>Input</td>
+													<td>RUN</td>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>11011011</td>
+													<td>00000001</td>
+												</tr>
+												<tr>
+													<td>11001001</td>
+													<td>00000001</td>
+												</tr>
+												<tr>
+													<td>11111111</td>
+													<td>00000001</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
 								</div>
-								<div class="row_button">
-									<div class="button number" id="simple_zero">0</div>
-									<div class="button number" id="simple_one">1</div>
+								<div class="fragment" data-fragment-index="7">
+									11 (÷) 001 (1) 010 (2)
+								</div>
+							</div>
+							<div>
+								<div class="fragment fade-in" data-fragment-index="9">
+									Which inputs do not trigger error?
+									<span style="background-color: lightgreen;">1</span><br>
+									<span style="background-color: lightgreen;">1 ÷ 1</span><br>
+									<span style="background-color: lightgreen;">1 ÷ 1 ÷ 1</span><br>
+									<span style="background-color: lightgreen;">1 ÷ 1 ÷ 1 ÷ 1</span>
+								</div>
+								<div class="fragment fade-in" data-fragment-index="10">
+									$($<span style="background-color:lightgreen;">1÷</span>$)^*$<span
+										style="background-color: lightgreen;">1</span>
+								</div>
+								<div class="fragment fade-in" data-fragment-index="11">
+									You have learned a grammar!
 								</div>
 							</div>
 						</div>
@@ -108,7 +164,46 @@
 				</div>
 			</section>
 			<section>
+				<div class="fragment fade-in" data-fragment-index="1">
+					$($<span style="background-color:lightgreen;">1÷</span>$)^*$<span
+						style="background-color: lightgreen;">1</span>
+				</div>
+				<div class="fragment fade-in" data-fragment-index="2">
+					$($<span style="background-color:lightgreen;">2÷</span>$)^*$<span
+						style="background-color: lightgreen;">2</span>
+				</div>
+				<div class="fragment fade-in" data-fragment-index="3">
+					... <br>
+					$($<span style="background-color:lightgreen;">1000÷</span>$)^*$<span
+						style="background-color: lightgreen;">1000</span>
+				</div>
+				<div class="fragment fade-in" data-fragment-index="4">
+					How to merge the regular expressions?
+				</div>
+				<div>
+					<span class="fragment fade-in" data-fragment-index="5">$($<span
+							style="background-color:lightgreen;">1÷</span>$)^*$<span
+							style="background-color: lightgreen;">1</span>
+					</span>
+					<span class="fragment fade-in" data-fragment-index="6">$|($<span
+							style="background-color:lightgreen;">2÷</span>$)^*$<span
+							style="background-color: lightgreen;">2</span>
+					</span>
+					<span class="fragment fade-in" data-fragment-index="7">$|\dots$
+					</span>
+					<span class="fragment fade-in" data-fragment-index="8">$|($<span
+							style="background-color:lightgreen;">1000÷</span>$)^*$<span
+							style="background-color: lightgreen;">1000</span>
+					</span>
+				</div>
+				<div class="fragment fade-in" data-fragment-index="9">
+					Is there a better way?
+				</div>
+			</section>
+			<section>
+				<div id="fsa">
 
+				</div>
 			</section>
 		</div>
 	</div>
@@ -118,17 +213,21 @@
 	<script src="plugin/notes/notes.js"></script>
 	<script src="plugin/markdown/markdown.js"></script>
 	<script src="plugin/highlight/highlight.js"></script>
+	<script src="plugin/math/math.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+
+
 	<!-- my calculator actions -->
 	<script src="calc.js"></script>
+	<script src="fsa.js"></script>
 	<script>
 		// More info about initialization & config:
 		// - https://revealjs.com/initialization/
 		// - https://revealjs.com/config/
 		Reveal.initialize({
 			hash: true,
-
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
 		});
 
 		anime({
