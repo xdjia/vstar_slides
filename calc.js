@@ -159,33 +159,56 @@ function update_my_table_body(table_id, row, col, value) {
 
 
 function init_pre_suf_table() {
-    const table = document.getElementById('pre_suf_table');
 
-    let rows = ["1", "1 ÷ ", "1 ÷ 1", "1 ÷ 1 ÷ 1"]
+    let rows = ["ϵ", "1", "1 ÷ ", "2 ÷ 2", "3 ÷ 3 ÷ 3"]
     let cols = ["", "1", " ÷ 1"]
 
     for (let i = 0; i < rows.length; i++) {
-        update_my_table_body('pre_suf_table', i, 0, rows[i])
+        update_my_table_body('pre_suf_table', i, 0, '$' + rows[i] + '$')
+        update_my_table_body('pre_suf_table2', i, 0, '$' + rows[i] + '$')
     }
-
-    // for (let j = 0; j < cols.length; j++) {
-    //     update_my_table_body('pre_suf_table', 0, j+1, cols[j])
-    // }
 
     for (let i = 0; i < rows.length; i++) {
         for (let j = 0; j < cols.length; j++) {
-            // update_my_table_body('pre_suf_table',  i, j+1, rows[i] + cols[j])
-            let expr = rows[i] + cols[j]
-            let result = "Error";
+            let expr = rows[i] + cols[j];
+
+            if (rows[i] === 'ϵ')
+                if (cols[j] === '') {
+                    expr = 'ϵ';
+                } else {
+                    expr = cols[j];
+                }
+
+            let result = expr;
+
             try {
                 eval(expr.replace(/÷/g, '/').replace(/×/g, '*'));
-                result = '<valid-in>' + rows[i] + cols[j] +'</valid-in>'
+                result = '<valid-in>$' + result + '$</valid-in>'
+                result2 = '<valid-in>$' + "+++" + '$</valid-in>'
             } catch (error) {
-                result = '<invalid-in>' + rows[i] + cols[j] +'</invalid-in>'
+                result = '<invalid-in>$' + result + '$</invalid-in>'
+                result2 = '<invalid-in>$' + "+++" + '$</invalid-in>'
             }
 
-            update_my_table_body('pre_suf_table',  i, j+1, '<span class="fragment">' + result +'<span/>')
+            update_my_table_body('pre_suf_table', i, j + 1, '<span class="fragment">' + result + '<span/>')
+            update_my_table_body('pre_suf_table2', i, j + 1, result2)
         }
+    }
+    let table1 = document.getElementById("pre_suf_table1")
+    let table2 = document.getElementById("pre_suf_table2")
+    let table3 = document.getElementById("pre_suf_table3")
+    let table4 = document.getElementById("pre_suf_table4")
+
+    table3.innerHTML = table2.innerHTML
+
+    for (let k of [3,5,6]) {
+        table3.rows[k].style.visibility = "hidden";
+    }
+
+    table4.innerHTML = table2.innerHTML
+
+    for (let k of [2,4]) {
+        table4.rows[k].style.visibility = "hidden";
     }
 }
 

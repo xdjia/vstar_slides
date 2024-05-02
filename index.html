@@ -199,30 +199,78 @@
 					<valid-in>1 ÷ 1 ÷ 1 ÷ 1</valid-in>
 				</div>
 			</section>
-			<section>
-				<div>
-					<table id="pre_suf_table">
-						<thead>
-							<tr>
-								<th scope="rowgroup" rowspan="2">Prefix</th>
-								<th scope="rowgroup" colspan="3">Suffix</th>
-							</tr>
-							<tr>
-								<th scope="col">$\epsilon$</th>
-								<th scope="col">1</th>
-								<th scope="col">÷ 1</th>
-							</tr>
-						</thead>
-						<tbody>
-						</tbody>
-					</table>
-				</div>
-
+			<section data-transition="none">
+				<table id="pre_suf_table" class="pre_suf_table">
+					<thead>
+						<tr>
+							<th scope="rowgroup" rowspan="2">Prefix</th>
+							<th scope="rowgroup" colspan="3">Suffix</th>
+						</tr>
+						<tr>
+							<th scope="col">$\epsilon$</th>
+							<th scope="col">$1$</th>
+							<th scope="col">$÷ 1$</th>
+						</tr>
+					</thead>
+					<tbody data-auto-animate data-id="box">
+					</tbody>
+				</table>
+			</section>
+			<section data-transition="none">
+				<table id="pre_suf_table2" class="pre_suf_table">
+					<thead>
+						<tr>
+							<th scope="rowgroup" rowspan="2">Prefix</th>
+							<th scope="rowgroup" colspan="3">Suffix</th>
+						</tr>
+						<tr>
+							<th scope="col">$\epsilon$</th>
+							<th scope="col">$1$</th>
+							<th scope="col">$÷ 1$</th>
+						</tr>
+					</thead>
+					<tbody data-auto-animate data-id="box"></tbody>
+				</table>
+			</section>
+			<section data-transition="none">
+				<table id="pre_suf_table3" class="pre_suf_table">
+					<thead>
+						<tr>
+							<th scope="rowgroup" rowspan="2">Prefix</th>
+							<th scope="rowgroup" colspan="3">Suffix</th>
+						</tr>
+						<tr>
+							<th scope="col">$\epsilon$</th>
+							<th scope="col">$1$</th>
+							<th scope="col">$÷ 1$</th>
+						</tr>
+					</thead>
+					<tbody data-auto-animate data-id="box"></tbody>
+				</table>
+			</section>
+			<section data-transition="none">
+				<table id="pre_suf_table4" class="pre_suf_table">
+					<thead>
+						<tr>
+							<th scope="rowgroup" rowspan="2">Prefix</th>
+							<th scope="rowgroup" colspan="3">Suffix</th>
+						</tr>
+						<tr>
+							<th scope="col">$\epsilon$</th>
+							<th scope="col">$1$</th>
+							<th scope="col">$÷ 1$</th>
+						</tr>
+					</thead>
+					<tbody data-auto-animate data-id="box"></tbody>
+				</table>
 			</section>
 			<section>
 				<div id="fsa">
-
 				</div>
+				<p class="fragment">For regular languages, the are finite number of equivalance classes (i.e., states). </p>
+			</section>
+			<section>
+				V-Star
 			</section>
 		</div>
 	</div>
@@ -246,6 +294,7 @@
 		// - https://revealjs.com/config/
 		Reveal.initialize({
 			hash: true,
+			backgroundTransition: 'slide',
 			// Learn about plugins: https://revealjs.com/plugins/
 			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
 		});

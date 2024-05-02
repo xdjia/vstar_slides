@@ -3,20 +3,15 @@
 const r = 50;
 
 const state1 = { id: 'state1', label: 'ε', x: 50 + r, y: 50 + r }
-const state3 = { id: 'state3', label: '1', x: 50 + r, y: 200 + r }
-const state2 = {
-    id: 'state2', label: '1÷',
-    x: state1.x + 1.732 * (state3.y - state1.y) / 2,
-    y: (state1.y + state3.y) / 2
-}
-const states = [state1, state2, state3];
+const state3 = { id: 'state3', label: '1', x: 200 + r, y: 50 + r, lineStyle: "double" }
+const states = [state1, state3];
 
 // Function to initialize the FSM
 function initFSM() {
     const container = document.getElementById('fsa');
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute('width', '500');
-    svg.setAttribute('height', '500');
+    svg.setAttribute('width', '350');
+    svg.setAttribute('height', '200');
 
     // Add arrowhead definition
     const defs = document.createElementNS(svg.namespaceURI, "defs");
@@ -47,19 +42,35 @@ function initFSM() {
 
         const text = document.createElementNS(svg.namespaceURI, "text");
         text.setAttribute('x', state.x);
-        text.setAttribute('y', state.y);
-        text.textContent = state.label;
+        text.setAttribute('y', state.y + r / 4);
+
+        // Create a tspan element which can be styled somewhat like HTML spans
+        const tspan = document.createElementNS(svg.namespaceURI, "tspan");
+        tspan.textContent = state.label;
+
+        // Append the tspan to the text element
+        text.appendChild(tspan);
+
         text.setAttribute('text-anchor', 'middle');
 
         svg.appendChild(circle);
         svg.appendChild(text);
+
+        if (state.lineStyle === 'double') {
+            // Create and append the inner circle
+            const innerCircle = document.createElementNS(svg.namespaceURI, "circle");
+            innerCircle.setAttribute('cx', state.x);
+            innerCircle.setAttribute('cy', state.y);
+            innerCircle.setAttribute('r', r - 4); // Smaller radius for the inner border
+            innerCircle.setAttribute('fill', 'none'); // No fill to keep the outer circle's color
+            innerCircle.setAttribute('stroke', 'black');
+            svg.appendChild(innerCircle);
+        }
     });
 
     // Create connections
-    const createLine = (point1, point2) => {
+    const createLine = (point1, point2, label = "", position = "up") => {
         const line = document.createElementNS(svg.namespaceURI, "line");
-        console.log(point1)
-        console.log(point2)
         line.setAttribute('x1', point1.x);
         line.setAttribute('y1', point1.y);
         line.setAttribute('x2', point2.x);
@@ -77,15 +88,19 @@ function initFSM() {
         const text = document.createElementNS(svg.namespaceURI, "text");
         text.setAttribute('x', midX);
         text.setAttribute('y', midY);
-        text.setAttribute('dy', '-10'); // Shift text up a little so it doesn't overlap the line directly
+        if (position === "up")
+            text.setAttribute('dy', '-10'); // Shift text up a little so it doesn't overlap the line directly
+        else if (position === "down")
+            text.setAttribute('dy', '30'); // Shift text up a little so it doesn't overlap the line directly
+
         text.setAttribute('text-anchor', 'middle'); // Center the text at its position
-        text.textContent = "hh";
+        text.innerHTML = label;
         svg.appendChild(text);
     };
 
-    createLine(right_down(state1, r), left_up(state2, r));    // State 1 to State 2
-    createLine(down(state1, r), up(state3, r));  // State 2 to State 3
-    createLine(right_up(state3, r), left_down(state2, r));  // State 2 to State 3
+    createLine({ x: state1.x - 2 * r, y: state1.y }, { x: state1.x - r, y: state1.y });
+    createLine(right_up(state1, r), left_up(state3, r), "1", "up");
+    createLine(left_down(state3, r), right_down(state1, r), "÷", "down");
 
     container.appendChild(svg);
 }

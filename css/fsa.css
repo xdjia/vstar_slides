@@ -1,7 +1,10 @@
 #fsa {
     position: relative;
-    display: flex;
+    display: block;
+    justify-content: center;
+    align-items: center;
 }
+
 .state {
     width: 100px;
     height: 100px;
