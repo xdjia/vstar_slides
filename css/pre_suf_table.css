@@ -1,0 +1,37 @@
+#pre_suf_table {
+    width: 100%;
+    /* border-collapse: collapse; */
+    font-size: xx-large;
+}
+
+#pre_suf_table > tbody > tr > th, td {
+    min-width: 1em;
+    /* border-top: 1px solid black; */
+    padding: 8px;
+}
+
+#pre_suf_table > thead > tr > th:nth-child(1) {
+    vertical-align: bottom;
+}
+
+/* New style for right-aligning all td in tbody */
+#pre_suf_table > tbody td {
+    text-align: right; /* Align text to the right in all body cells */
+}
+
+/* New style for right-aligning all td in tbody */
+#pre_suf_table > tbody td:nth-child(1) {
+    text-align: left; /* Align text to the right in all body cells */
+}
+
+#pre_suf_table > thead > tr:nth-child(1) > th {
+    text-align: center;
+}
+
+#pre_suf_table > thead > tr > th {
+    text-align: right;
+}
+
+.right_aligned {
+    text-align: right;
+}

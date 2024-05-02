@@ -68,6 +68,19 @@ function initFSM() {
         line.setAttribute('marker-end', 'url(#arrowhead)');
         line.setAttribute('text-anchor', 'hehe');
         svg.appendChild(line);
+
+        // Calculate midpoint for the text label
+        const midX = (point1.x + point2.x) / 2;
+        const midY = (point1.y + point2.y) / 2;
+
+        // Create the text element
+        const text = document.createElementNS(svg.namespaceURI, "text");
+        text.setAttribute('x', midX);
+        text.setAttribute('y', midY);
+        text.setAttribute('dy', '-10'); // Shift text up a little so it doesn't overlap the line directly
+        text.setAttribute('text-anchor', 'middle'); // Center the text at its position
+        text.textContent = "hh";
+        svg.appendChild(text);
     };
 
     createLine(right_down(state1, r), left_up(state2, r));    // State 1 to State 2

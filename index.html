@@ -16,6 +16,8 @@
 	<link rel="stylesheet" href="css/simple_device.css">
 	<link rel="stylesheet" href="css/fragment.css">
 	<link rel="stylesheet" href="css/fsa.css">
+	<link rel="stylesheet" href="css/pre_suf_table.css">
+	<link rel="stylesheet" href="css/color_input.css">
 
 	<!-- <link rel="stylesheet" href="css/ani_button.css"> -->
 
@@ -146,14 +148,13 @@
 							<div>
 								<div class="fragment fade-in" data-fragment-index="9">
 									Which inputs do not trigger error?
-									<span style="background-color: lightgreen;">1</span><br>
-									<span style="background-color: lightgreen;">1 ÷ 1</span><br>
-									<span style="background-color: lightgreen;">1 ÷ 1 ÷ 1</span><br>
-									<span style="background-color: lightgreen;">1 ÷ 1 ÷ 1 ÷ 1</span>
+									<valid-in>1</valid-in><br>
+									<valid-in>1 ÷ 1</valid-in><br>
+									<valid-in>1 ÷ 1 ÷ 1</valid-in><br>
+									<valid-in>1 ÷ 1 ÷ 1 ÷ 1</valid-in>
 								</div>
 								<div class="fragment fade-in" data-fragment-index="10">
-									$($<span style="background-color:lightgreen;">1÷</span>$)^*$<span
-										style="background-color: lightgreen;">1</span>
+									$($<valid-in>1÷</valid-in>$)^*$<valid-in>1</valid-in>
 								</div>
 								<div class="fragment fade-in" data-fragment-index="11">
 									You have learned a grammar!
@@ -164,41 +165,59 @@
 				</div>
 			</section>
 			<section>
-				<div class="fragment fade-in" data-fragment-index="1">
-					$($<span style="background-color:lightgreen;">1÷</span>$)^*$<span
-						style="background-color: lightgreen;">1</span>
+				<div class="fragment" data-fragment-index="1">
+					$($<valid-in>1÷</valid-in>$)^*$<valid-in>1</valid-in>
 				</div>
-				<div class="fragment fade-in" data-fragment-index="2">
-					$($<span style="background-color:lightgreen;">2÷</span>$)^*$<span
-						style="background-color: lightgreen;">2</span>
+				<div class="fragment" data-fragment-index="2">
+					$($<valid-in>2÷</valid-in>$)^*$<valid-in>2</valid-in>
 				</div>
-				<div class="fragment fade-in" data-fragment-index="3">
+				<div class="fragment" data-fragment-index="3">
 					... <br>
-					$($<span style="background-color:lightgreen;">1000÷</span>$)^*$<span
-						style="background-color: lightgreen;">1000</span>
+					$($<valid-in>1000÷</valid-in>$)^*$<valid-in>1000</valid-in>
 				</div>
-				<div class="fragment fade-in" data-fragment-index="4">
+				<div class="fragment" data-fragment-index="4">
 					How to merge the regular expressions?
 				</div>
 				<div>
-					<span class="fragment fade-in" data-fragment-index="5">$($<span
-							style="background-color:lightgreen;">1÷</span>$)^*$<span
-							style="background-color: lightgreen;">1</span>
-					</span>
-					<span class="fragment fade-in" data-fragment-index="6">$|($<span
-							style="background-color:lightgreen;">2÷</span>$)^*$<span
-							style="background-color: lightgreen;">2</span>
-					</span>
-					<span class="fragment fade-in" data-fragment-index="7">$|\dots$
-					</span>
-					<span class="fragment fade-in" data-fragment-index="8">$|($<span
-							style="background-color:lightgreen;">1000÷</span>$)^*$<span
-							style="background-color: lightgreen;">1000</span>
-					</span>
+					<span class="fragment"
+						data-fragment-index="5">$($<valid-in>1÷</valid-in>$)^*$<valid-in>1</valid-in></span>
+					<span class="fragment"
+						data-fragment-index="6">$|($<valid-in>2÷</valid-in>$)^*$<valid-in>2</valid-in></span>
+					<span class="fragment" data-fragment-index="7">$|\dots$</span>
+					<span class="fragment"
+						data-fragment-index="8">$|($<valid-in>1000÷</valid-in>$)^*$<valid-in>1000</valid-in></span>
 				</div>
-				<div class="fragment fade-in" data-fragment-index="9">
+				<div class="fragment" data-fragment-index="9">
 					Is there a better way?
 				</div>
+			</section>
+			<section>
+				<div class="fragment current-visible">
+					<valid-in>1</valid-in><br>
+					<valid-in>1 ÷ 1</valid-in><br>
+					<valid-in>1 ÷ 1 ÷ 1</valid-in><br>
+					<valid-in>1 ÷ 1 ÷ 1 ÷ 1</valid-in>
+				</div>
+			</section>
+			<section>
+				<div>
+					<table id="pre_suf_table">
+						<thead>
+							<tr>
+								<th scope="rowgroup" rowspan="2">Prefix</th>
+								<th scope="rowgroup" colspan="3">Suffix</th>
+							</tr>
+							<tr>
+								<th scope="col">$\epsilon$</th>
+								<th scope="col">1</th>
+								<th scope="col">÷ 1</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+
 			</section>
 			<section>
 				<div id="fsa">
@@ -220,6 +239,7 @@
 	<!-- my calculator actions -->
 	<script src="calc.js"></script>
 	<script src="fsa.js"></script>
+	<script src="pre_suf_table.js"></script>
 	<script>
 		// More info about initialization & config:
 		// - https://revealjs.com/initialization/

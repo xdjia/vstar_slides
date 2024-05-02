@@ -109,9 +109,9 @@ function simulate_click() {
 
             // Update Result Table
             if (i < blist.length - 1)
-                update_my_table("result_table", ilist, 0, display.textContent)
+                update_my_table_body("result_table", ilist, 0, display.textContent)
             else
-                update_my_table("result_table", ilist, 1, display.textContent)
+                update_my_table_body("result_table", ilist, 1, display.textContent)
 
         } else {
             if (ilist + 1 < buttonList.length)
@@ -127,32 +127,66 @@ function simulate_click() {
 
 }
 
-function update_my_table(table_id, row, col, value) {
+function update_my_table_body(table_id, row, col, value) {
     let table = document.getElementById(table_id); // Get the table element
+    // console.log(table)
     let tbody = table.getElementsByTagName("tbody")[0]; // Get the tbody
-  
+
     // Ensure the tbody exists
     if (!tbody) {
-      tbody = document.createElement("tbody");
-      table.appendChild(tbody);
+        tbody = document.createElement("tbody");
+        table.appendChild(tbody);
     }
-  
+
     // Check if the specified row exists
     while (tbody.rows.length <= row) {
-      let newRow = tbody.insertRow(); // Create new row at the end of the table
-      // Initialize new cells for existing columns
-      for (let i = 0; i < table.rows[0].cells.length; i++) {
-        newRow.insertCell(i).innerHTML = ""; // Create empty cells
-      }
+        let newRow = tbody.insertRow(); // Create new row at the end of the table
+        // Initialize new cells for existing columns
+        for (let i = 0; i < table.rows[0].cells.length; i++) {
+            newRow.insertCell(i).innerHTML = ""; // Create empty cells
+        }
     }
-  
+
     // Check if the specified column exists
     let existingRow = tbody.rows[row];
     while (existingRow.cells.length <= col) {
-      existingRow.insertCell(); // Create new cell at the end of the row
+        existingRow.insertCell(); // Create new cell at the end of the row
     }
-  
+
     // Update the specified cell
     existingRow.cells[col].innerHTML = value;
-  }
-  
+}
+
+
+function init_pre_suf_table() {
+    const table = document.getElementById('pre_suf_table');
+
+    let rows = ["1", "1 ÷ ", "1 ÷ 1", "1 ÷ 1 ÷ 1"]
+    let cols = ["", "1", " ÷ 1"]
+
+    for (let i = 0; i < rows.length; i++) {
+        update_my_table_body('pre_suf_table', i, 0, rows[i])
+    }
+
+    // for (let j = 0; j < cols.length; j++) {
+    //     update_my_table_body('pre_suf_table', 0, j+1, cols[j])
+    // }
+
+    for (let i = 0; i < rows.length; i++) {
+        for (let j = 0; j < cols.length; j++) {
+            // update_my_table_body('pre_suf_table',  i, j+1, rows[i] + cols[j])
+            let expr = rows[i] + cols[j]
+            let result = "Error";
+            try {
+                eval(expr.replace(/÷/g, '/').replace(/×/g, '*'));
+                result = '<valid-in>' + rows[i] + cols[j] +'</valid-in>'
+            } catch (error) {
+                result = '<invalid-in>' + rows[i] + cols[j] +'</invalid-in>'
+            }
+
+            update_my_table_body('pre_suf_table',  i, j+1, '<span class="fragment">' + result +'<span/>')
+        }
+    }
+}
+
+init_pre_suf_table();
