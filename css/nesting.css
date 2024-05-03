@@ -1,0 +1,5 @@
+.code-animation {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 24px;
+    transition: all 0.8s ease-in-out;
+}

@@ -110,9 +110,9 @@ const dx = r * Math.cos(angle)
 const dy = r * Math.sin(angle)
 
 function right_down(state, r) {
-    console.log('right_down',
-        state.x + r * Math.cos(angle),
-        state.y + r * Math.sin(angle), r)
+    // console.log('right_down',
+    //     state.x + r * Math.cos(angle),
+    //     state.y + r * Math.sin(angle), r)
 
     return {
         x: state.x + dx,

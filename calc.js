@@ -270,7 +270,7 @@ function init_vtable2() {
 
     update_my_table_body(table_id, 0, 0, "$\\epsilon$")
     for (let i of [1, 2, 3]) {
-        vrow = i === 1?'$\\epsilon$':'$' + rows[i] + '$'
+        vrow = i === 1 ? '$\\epsilon$' : '$' + rows[i] + '$'
         update_my_table_body(table_id, i, 0, vrow)
 
         // table1.rows[k].style.visibility = "hidden";
@@ -283,7 +283,7 @@ function init_vtable2() {
 
             let result = expr;
 
-            if (result === "") 
+            if (result === "")
                 result = "ϵ"
 
             try {

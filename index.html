@@ -19,6 +19,7 @@
 	<link rel="stylesheet" href="css/pre_suf_table.css">
 	<link rel="stylesheet" href="css/color_input.css">
 	<link rel="stylesheet" href="css/vtable.css">
+	<link rel="stylesheet" href="css/nesting.css">
 
 	<!-- <link rel="stylesheet" href="css/ani_button.css"> -->
 
@@ -349,15 +350,19 @@
 					</div>
 				</div>
 			</section>
-			<section>
+			<section id="nesting_examples">
+				<div>Regular Structures</div>
+				<div id="reg_nesting_arith" class="code-animation"> </div>
 				<div>Nesting Structures</div>
-				<div id="nesting_arith">(1÷(1÷1))</div>
-				<div id="nesting_lisp">(x . (y z))</div>
-				<div id="nesting_json">{"a": [true]}</div>
-				<div id="nesting_while">if x > y then z else w</div>
-				<div id="nesting_xml"> <code> ls -la </code> </div>
+				<div id="nesting_arith" class="code-animation"> </div>
+				<div id="nesting_lisp" class="code-animation"> </div>
+				<div id="nesting_json" class="code-animation"> </div>
+				<div id="nesting_while" class="code-animation"> </div>
+				<div id="nesting_xml" class="code-animation"> </div>
+			</section>
+			<section>
 				<div>Visibly Pushdown Grammars (VPGs)</div>
-				<div>VPGs = Regular Grammar + Nesting Structures</div>
+				<div>= Regular Grammar + Nesting Structures</div>
 			</section>
 			<section>
 			</section>
@@ -380,6 +385,8 @@
 	<script src="calc.js"></script>
 	<script src="fsa.js"></script>
 	<script src="pre_suf_table.js"></script>
+	<script src="code.js"></script>
+
 	<script>
 		// More info about initialization & config:
 		// - https://revealjs.com/initialization/
