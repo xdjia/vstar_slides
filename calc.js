@@ -201,15 +201,112 @@ function init_pre_suf_table() {
 
     table3.innerHTML = table2.innerHTML
 
-    for (let k of [3,5,6]) {
+    for (let k of [3, 5, 6]) {
         table3.rows[k].style.visibility = "hidden";
     }
 
     table4.innerHTML = table2.innerHTML
 
-    for (let k of [2,4]) {
+    for (let k of [2, 4]) {
         table4.rows[k].style.visibility = "hidden";
     }
 }
 
+function init_vtable() {
+    let table1 = document.getElementById("vtable");
+
+    let rows = ["ϵ", "(1", "((1", "(((1"]
+    let cols = ["ϵ", " ÷ 1)", " ÷ 1) ÷ 1)", " ÷ 1) ÷ 1) ÷ 1)"]
+
+    update_my_table_body('vtable', 0, 0, "$\\epsilon$")
+    for (let i of [1, 2, 3]) {
+        update_my_table_body('vtable', i, 0, '$' + rows[i] + '$')
+
+        // table1.rows[k].style.visibility = "hidden";
+    }
+
+    for (let i = 0; i < rows.length; i++) {
+        for (let j = 0; j < cols.length; j++) {
+
+            let expr = rows[i] + cols[j];
+
+            if (rows[i] === 'ϵ' && cols[j] === 'ϵ')
+                expr = 'ϵ';
+            else if (cols[j] === 'ϵ')
+                expr = rows[i];
+            else if (rows[i] === 'ϵ')
+                expr = cols[j];
+
+            let result = expr;
+
+            try {
+                eval(expr.replace(/÷/g, '/').replace(/×/g, '*'));
+                result = '<valid-in>$' + result + '$</valid-in>'
+                result2 = '<valid-in>$' + "+++" + '$</valid-in>'
+            } catch (error) {
+                result = '<invalid-in>$' + result + '$</invalid-in>'
+                result2 = '<invalid-in>$' + "+++" + '$</invalid-in>'
+            }
+
+            if (rows[i] === 'ϵ')
+                if (cols[j] === '') {
+                    expr = 'ϵ';
+                } else {
+                    expr = cols[j];
+                }
+
+            update_my_table_body('vtable', i, j + 1, result)
+        }
+    }
+}
+
+function init_vtable2() {
+    let table1 = document.getElementById("vtable");
+
+    table_id = 'vtable2'
+
+    let rows = ["", "1", "1 ÷", "(1 ÷ 1)"]
+    let cols = [["", ""], ["", " ÷ 1"], ["(", " ÷ 1)"]]
+
+    update_my_table_body(table_id, 0, 0, "$\\epsilon$")
+    for (let i of [1, 2, 3]) {
+        vrow = i === 1?'$\\epsilon$':'$' + rows[i] + '$'
+        update_my_table_body(table_id, i, 0, vrow)
+
+        // table1.rows[k].style.visibility = "hidden";
+    }
+
+    for (let i = 0; i < rows.length; i++) {
+        for (let j = 0; j < cols.length; j++) {
+
+            let expr = cols[j][0] + rows[i] + cols[j][1];
+
+            let result = expr;
+
+            if (result === "") 
+                result = "ϵ"
+
+            try {
+                eval(result.replace(/÷/g, '/').replace(/×/g, '*'));
+                result = '<valid-in>$' + result + '$</valid-in>'
+                result2 = '<valid-in>$' + "+++" + '$</valid-in>'
+            } catch (error) {
+                result = '<invalid-in>$' + result + '$</invalid-in>'
+                result2 = '<invalid-in>$' + "+++" + '$</invalid-in>'
+            }
+
+            if (rows[i] === 'ϵ')
+                if (cols[j] === '') {
+                    expr = 'ϵ';
+                } else {
+                    expr = cols[j];
+                }
+
+            update_my_table_body(table_id, i, j + 1, result)
+        }
+    }
+}
+
 init_pre_suf_table();
+init_vtable();
+init_vtable2();

@@ -1,0 +1,95 @@
+#div_vtable {
+    flex-grow: 1;
+    /* Take remaining space */
+    padding-left: 5%;
+    /* Left padding */
+    font-size: large;
+    /* Larger font for better readability */
+    width: 100%;
+    /* Full width */
+}
+
+#vtable {
+    width: 100%;
+    /* Full width of its container */
+    table-layout: auto;
+    /* Allow the table to adjust column width based on content */
+}
+
+#vtable>thead>tr:nth-child(2)>th:nth-child(1),
+#vtable th,
+#vtable td {
+    white-space: nowrap;
+    /* Prevent text wrapping */
+    text-align: right;
+    /* Right align all text */
+    padding: 8px;
+    /* Add padding for better spacing */
+}
+
+#vtable th:nth-child(1),
+#vtable td:nth-child(1) {
+    text-align: left;
+    /* Left align the first column */
+    width: auto;
+    /* Auto width for the first column */
+}
+
+#vtable thead th {
+    vertical-align: bottom;
+    /* Align the text at the bottom for header cells */
+}
+
+/* Apply specific width to columns if needed */
+#vtable>tbody>tr:nth-child(1)>td:nth-child(2) {
+    width: 10%;
+    /* Example width, adjust as needed */
+}
+
+#vtable thead tr:nth-child(1) th {
+    text-align: center;
+    /* Center align the first row of headers */
+}
+
+
+#vtable2 {
+    width: 100%;
+    /* Full width of its container */
+    table-layout: auto;
+    /* Allow the table to adjust column width based on content */
+}
+
+#vtable2>thead>tr:nth-child(2)>th:nth-child(1),
+#vtable2 th,
+#vtable2 td {
+    white-space: nowrap;
+    /* Prevent text wrapping */
+    text-align: right;
+    /* Right align all text */
+    padding: 8px;
+    /* Add padding for better spacing */
+}
+
+#vtable2 th:nth-child(1),
+#vtable2 td:nth-child(1) {
+    text-align: left;
+    /* Left align the first column */
+    width: auto;
+    /* Auto width for the first column */
+}
+
+#vtable2 thead th {
+    vertical-align: bottom;
+    /* Align the text at the bottom for header cells */
+}
+
+/* Apply specific width to columns if needed */
+#vtable2>tbody>tr:nth-child(1)>td:nth-child(2) {
+    width: 10%;
+    /* Example width, adjust as needed */
+}
+
+#vtable2 thead tr:nth-child(1) th {
+    text-align: center;
+    /* Center align the first row of headers */
+}

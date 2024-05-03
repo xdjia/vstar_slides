@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>reveal.js</title>
+	<title>V-Star</title>
 
 	<link rel="stylesheet" href="dist/reset.css">
 	<link rel="stylesheet" href="dist/reveal.css">
@@ -18,6 +18,7 @@
 	<link rel="stylesheet" href="css/fsa.css">
 	<link rel="stylesheet" href="css/pre_suf_table.css">
 	<link rel="stylesheet" href="css/color_input.css">
+	<link rel="stylesheet" href="css/vtable.css">
 
 	<!-- <link rel="stylesheet" href="css/ani_button.css"> -->
 
@@ -267,10 +268,101 @@
 			<section>
 				<div id="fsa">
 				</div>
-				<p class="fragment">For regular languages, the are finite number of equivalance classes (i.e., states). </p>
+				<div class="fragment">For regular languages, the number of equivalance classes (i.e., states, different
+					color sequences) is finite.
+				</div>
 			</section>
 			<section>
-				V-Star
+				<div style="display: flex;">
+					<div id="calculator2" class="device">
+						<div id="display2" class="display_screen">
+							<div id="display_screen2" class="number">0</div>
+						</div>
+						<div id="calc_body2">
+							<div class="row_button">
+								<div class="button AC">AC</div>
+								<div class="button plus-minus">±</div>
+								<div class="button percent">%</div>
+								<div class="button divide">÷</div>
+							</div>
+							<div class="row_button">
+								<div class="button number seven">7</div>
+								<div class="button number eight">8</div>
+								<div class="button number nine">9</div>
+								<div class="button multiply">×</div>
+							</div>
+							<div class="row_button">
+								<div class="button number four">4</div>
+								<div class="button number five">5</div>
+								<div class="button number six">6</div>
+								<div class="button open">(</div>
+							</div>
+							<div class="row_button">
+								<div class="button number one">1</div>
+								<div class="button number two">2</div>
+								<div class="button number three">3</div>
+								<div class="button close">)</div>
+							</div>
+							<div class="row_button">
+								<div class="button number zero">0</div>
+								<div class="button dot">.</div>
+								<div class="button equal">=</div>
+							</div>
+						</div>
+					</div>
+					<div id="div_vtable" class="r-stack">
+						<div class="fragment current-visible">
+							<table id="vtable" class="vtable">
+								<thead>
+									<tr>
+										<th scope="rowgroup" rowspan="2">Prefix</th>
+										<th scope="rowgroup" colspan="4">Suffix</th>
+									</tr>
+									<tr>
+										<th scope="col">$\epsilon$</th>
+										<th scope="col">$÷1)$</th>
+										<th scope="col">$÷1)÷1)$</th>
+										<th scope="col">$÷1)÷1)÷1)$</th>
+									</tr>
+								</thead>
+								<tbody data-auto-animate data-id="box">
+								</tbody>
+							</table>
+						</div>
+						<div class="fragment current-visible">
+							<table id="vtable2" class="vtable">
+								<thead>
+									<tr>
+										<th scope="rowgroup" rowspan="2">Infix</th>
+										<th scope="rowgroup" colspan="4">Left Context, Right Context</th>
+									</tr>
+									<tr>
+										<th scope="col">$\epsilon, \epsilon$</th>
+										<th scope="col">$\epsilon, ÷ 1$</th>
+										<th scope="col">$(, ÷1)$</th>
+									</tr>
+								</thead>
+								<tbody data-auto-animate data-id="box">
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div>Nesting Structures</div>
+				<div id="nesting_arith">(1÷(1÷1))</div>
+				<div id="nesting_lisp">(x . (y z))</div>
+				<div id="nesting_json">{"a": [true]}</div>
+				<div id="nesting_while">if x > y then z else w</div>
+				<div id="nesting_xml"> <code> ls -la </code> </div>
+				<div>Visibly Pushdown Grammars (VPGs)</div>
+				<div>VPGs = Regular Grammar + Nesting Structures</div>
+			</section>
+			<section>
+			</section>
+			<section>
+				<div>V-Star learns VPGs from program inputs.</div>
 			</section>
 		</div>
 	</div>

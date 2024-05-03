@@ -1,13 +1,26 @@
-
-.button#divide,
-.button#multiply,
-.button#subtract,
-.button#add,
-.button#equal {
+#divide,
+.button.divide,
+#multiply,
+.button.multiply,
+#subtract,
+.button.subtract,
+#add,
+.button.add,
+#equal,
+.button.equal {
     background-color: #FF9E0B;
     /* Orange color for function buttons */
 }
 
+.button.open,
+.button.close {
+    background-color: #666666;
+    /* Orange color for function buttons */
+}
+
+.button.AC,
+.button.plus-minus,
+.button.percent,
 .button#AC,
 .button#plus-minus,
 .button#percent {
@@ -27,7 +40,8 @@
     display: block;
 }
 
-#calculator {
+#calculator,
+#calculator2 {
     min-width: 300px;
     min-height: 400px;
     width: 300px;
@@ -58,7 +72,8 @@
 }
 
 
-#calc_body {
+#calc_body,
+#calc_body2 {
     height: 80%;
     /* Adjusted dynamically based on the calculator's height */
 }
@@ -83,7 +98,8 @@
     /* Orange color for function buttons */
 }
 
-.button#zero {
+.button#zero,
+.button.zero {
     width: calc(50% + var(--spacing));
     border-bottom-left-radius: 10px;
     /* Adjust the radius as needed */
@@ -119,5 +135,3 @@
     /* color: #333; */
     animation: click-animation 0.2s ease;
 }
-
-
