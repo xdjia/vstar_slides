@@ -1,0 +1,60 @@
+.performance-table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid black;
+    text-align: center;
+    font-size: large;
+}
+
+.performance-table caption {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.performance-table th {
+    color: white;
+}
+.performance-table th,
+.performance-table td {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+.performance-table thead th {
+    background-color: #333;
+}
+
+.performance-table th.right-aligned,
+.performance-table td.right-aligned {
+    text-align: right;
+}
+
+.performance-table th,
+.performance-table td {
+    white-space: nowrap;
+    /* Prevent text wrapping */
+    padding: 8px;
+    /* Add padding for better spacing */
+    width: 14%;
+}
+
+#performanceTable > thead > tr:nth-child(1) > th:nth-child(1) {
+    text-align: left;
+    vertical-align: bottom;
+}
+
+#performanceTable > thead > tr:nth-child(1) > th {
+    text-align: center;
+}
+
+#performanceTable > thead > tr:nth-child(2) > th {
+    text-align: right;
+}
+
+.performance-table>tbody>tr>td {
+    text-align: right;
+}
+
+.performance-table>tbody>tr>td:nth-child(1) {
+    text-align: left;
+}

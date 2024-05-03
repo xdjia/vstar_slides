@@ -3,3 +3,21 @@
     font-size: 24px;
     transition: all 0.8s ease-in-out;
 }
+
+n-p {
+    background-color: lightgreen;
+}
+
+r-p {
+    background-color: lightpink;
+}
+
+v-code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 32px;
+    
+}
+
+.code-center {
+    text-align: center;
+}

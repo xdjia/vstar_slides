@@ -20,6 +20,7 @@
 	<link rel="stylesheet" href="css/color_input.css">
 	<link rel="stylesheet" href="css/vtable.css">
 	<link rel="stylesheet" href="css/nesting.css">
+	<link rel="stylesheet" href="css/eval_table.css">
 
 	<!-- <link rel="stylesheet" href="css/ani_button.css"> -->
 
@@ -193,14 +194,6 @@
 					Is there a better way?
 				</div>
 			</section>
-			<section>
-				<div class="fragment current-visible">
-					<valid-in>1</valid-in><br>
-					<valid-in>1 ÷ 1</valid-in><br>
-					<valid-in>1 ÷ 1 ÷ 1</valid-in><br>
-					<valid-in>1 ÷ 1 ÷ 1 ÷ 1</valid-in>
-				</div>
-			</section>
 			<section data-transition="none">
 				<table id="pre_suf_table" class="pre_suf_table">
 					<thead>
@@ -365,9 +358,97 @@
 				<div>= Regular Grammar + Nesting Structures</div>
 			</section>
 			<section>
+				<div>V-Star learns VPGs from program inputs.</div>
+				<ol>
+					<li class="fragment">
+						<div>Identify nesting structures.</div>
+						<div class="code-center"><v-code>&lt;p&gt;hello&lt;/p&gt;</v-code> ⇒
+							<v-code><n-p>&lt;p&gt;</n-p>hello<n-p>&lt;/p&gt;</n-p></v-code>
+						</div>
+					</li>
+					<li class="fragment">
+						<div>Identify equivalance classes.</div>
+						<div class="code-center"><v-code>hello $\sim$ hi</v-code></div>
+						<div class="code-center"><v-code><n-p>&lt;p&gt;</n-p>hello<n-p>&lt;/p&gt;</n-p> $\sim$
+								<n-p>&lt;p&gt;</n-p>hi<n-p>&lt;/p&gt;</n-p></v-code></div>
+					</li>
+					<li class="fragment">
+						<div>Convert equivalance classes into VPGs.</div>
+						<div class="code-center"><v-code>$L\to$ <n-p>&lt;p&gt;</n-p> $L$ <n-p>&lt;/p&gt;</n-p> $\mid $
+								TEXT</v-code></div>
+					</li>
+				</ol>
 			</section>
 			<section>
-				<div>V-Star learns VPGs from program inputs.</div>
+				<div>V-Star: Slow, but Accurate</div>
+
+				<table class="performance-table" id="performanceTable">
+					<!-- <caption>Accuracy Comparison</caption> -->
+					<thead>
+						<tr>
+							<th rowspan="2">Grammar</th>
+							<th colspan="2">GLADE</th>
+							<th colspan="2">Arvada</th>
+							<th colspan="2">V-Star</th>
+						</tr>
+						<tr>
+							<th>Accuracy</th>
+							<th>Time</th>
+							<th>Accuracy</th>
+							<th>Time</th>
+							<th>Accuracy</th>
+							<th>Time</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>JSON</td>
+							<td>0.59</td>
+							<td>21 s</td>
+							<td>25 ± 0.05</td>
+							<td>25 s ± 2s</td>
+							<td>1.00</td>
+							<td>33 min</td>
+						</tr>
+						<tr>
+							<td>Lisp</td>
+							<td>0.38</td>
+							<td>7 s</td>
+							<td>0.50 ± 0.18</td>
+							<td>8 s ± 2 s</td>
+							<td>1.00</td>
+							<td>77 s</td>
+						</tr>
+						<tr>
+							<td>XML</td>
+							<td>0.42</td>
+							<td>21 s</td>
+							<td>1.00 ± 0.01</td>
+							<td>61 s ± 5 s</td>
+							<td>1.00</td>
+							<td>16 min</td>
+						</tr>
+						<tr>
+							<td>While</td>
+							<td>0.02</td>
+							<td>13 s</td>
+							<td>0.94 ± 0.14</td>
+							<td>15 s ± 1 s</td>
+							<td>1.00</td>
+							<td>1.5 h</td>
+						</tr>
+						<tr>
+							<td>MathExpr</td>
+							<td>0.31</td>
+							<td>42 s</td>
+							<td>0.80 ± 0.16</td>
+							<td>24 s ± 2 s</td>
+							<td>1.00</td>
+							<td>6 h</td>
+						</tr>
+					</tbody>
+				</table>
+
 			</section>
 		</div>
 	</div>
