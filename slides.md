@@ -332,11 +332,11 @@ $$
 <!-- _header: Learn Finite State Automata and Visibly Pushdown Automata -->
 
 * Learn regular expression
-  * Regular expression is equivalent to Finite State Automata (FSA)
+  * Regular expression is equivalent to Finite State Automata (FSA).
 * $\to$ Learn FSA
   * Each state in the automata is an equivalence class.
 * $\to$ Learn Equivalence Classes
-* $\to$ Angluin's $L^*$ (1979): Fill a table!
+  * $\to$ Angluin's $L^*$ (1979): There is a table-based method!
 
 ---
 
@@ -380,7 +380,7 @@ $$
         <tr>
             <td>1 × 1</td>
             <td><valid-in>1 × 1</valid-in></td>
-            <td><valid-in>1 × 21</valid-in></td>
+            <td><valid-in>1 × 11</valid-in></td>
             <td><valid-in>1 × 1 × 1</valid-in></td>
         </tr>
         <tr>
@@ -450,7 +450,7 @@ $$
 
 </center>
 
-* The color sequences becomes the equivalence classes.
+* Each color sequence represents an equivalence class.
 
 ---
 
@@ -569,6 +569,139 @@ $$
 
 - `1` is equivalent to `1 × 1` and `1 × 1 × 1`.
 
+---
+
+<!-- _header: Learn Finite State Automata and Visibly Pushdown Automata -->
+
+#### Build an FSA
+
+- The equivalence classes can be convert to an FSA directly.
+
+<div id="fsa" style="text-align:center;">
+    <svg width="350" height="200"><defs><marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="black"></polygon></marker></defs><circle cx="100" cy="100" r="50" fill="white" stroke="black" class="state"></circle><text x="100" y="112.5" text-anchor="middle"><tspan>ε</tspan></text><circle cx="250" cy="100" r="50" fill="white" stroke="black" class="state"></circle><text x="250" y="112.5" text-anchor="middle"><tspan>1</tspan></text><circle cx="250" cy="100" r="46" fill="none" stroke="black"></circle><line x1="0" y1="100" x2="50" y2="100" stroke="black" marker-end="url(#arrowhead)" text-anchor="hehe"></line><text x="25" y="100" dy="-10" text-anchor="middle"></text><line x1="143.30127018922195" y1="75" x2="206.69872981077805" y2="75" stroke="black" marker-end="url(#arrowhead)" text-anchor="hehe"></line><text x="175" y="75" dy="-10" text-anchor="middle">1</text><line x1="206.69872981077805" y1="125" x2="143.30127018922195" y2="125" stroke="black" marker-end="url(#arrowhead)" text-anchor="hehe"></line><text x="175" y="125" dy="30" text-anchor="middle">×</text></svg></div>
+
+- The FSA above is equivalent to regular expression $($`1×`$)^*$`1`.
+
+---
+
+#### Doesn't work for VPG
+
+<!-- _header: Learn Finite State Automata and Visibly Pushdown Automata -->
+
+<center>
+
+<table id="vtable" class="vtable">
+    <thead>
+        <tr>
+            <th scope="rowgroup" rowspan="2">Prefix</th>
+            <th scope="rowgroup" colspan="5">Suffix</th>
+        </tr>
+        <tr>
+            <th scope="col">ϵ</th>
+            <th scope="col">×1)</th>
+            <th scope="col">×1)×1)</th>
+            <th scope="col">...</th>
+            <th scope="col">×1)...×1)</th>
+        </tr>
+    </thead>
+    <tbody data-auto-animate="" data-id="box">
+        <tr>
+            <td>ϵ</td>
+            <td><invalid-in>ϵ</invalid-in></td>
+            <td><invalid-in>×1)</invalid-in></td>
+            <td><invalid-in>×1) ×1)</invalid-in></td>
+            <td>...</td>
+            <td><invalid-in>×1) ×1) ×1)</invalid-in></td>
+        </tr>
+        <tr>
+            <td>(1</td>
+            <td><invalid-in>(1</invalid-in></td>
+            <td><valid-in>(1 ×1)</valid-in></td>
+            <td><invalid-in>(1 ×1) ×1)</invalid-in></td>
+            <td>...</td>
+            <td><invalid-in>(1 ×1) ×1) ×1)</invalid-in></td>
+        </tr>
+        <tr>
+            <td>((1</td>
+            <td><invalid-in>((1</invalid-in></td>
+            <td><invalid-in>((1 ×1)</invalid-in></td>
+            <td><valid-in>((1 ×1) ×1)</valid-in></td>
+            <td>...</td>
+            <td><invalid-in>((1 ×1) ×1) ×1)</invalid-in></td>
+        </tr>
+        <tr>
+            <td>...</td>
+            <td> ... </td>
+            <td> ... </td>
+            <td> ... </td>
+            <td> ... </td>
+            <td> ... </td>
+        </tr>
+        <tr>
+            <td>(...(1</td>
+            <td><invalid-in>(((1</invalid-in></td>
+            <td><invalid-in>(((1 ×1)</invalid-in></td>
+            <td><invalid-in>(((1 ×1) ×1)</invalid-in></td>
+            <td>...</td>
+            <td><valid-in>(...(1 ×1) ... ×1)</valid-in></td>
+        </tr>
+    </tbody>
+</table>
+
+</center>
+
+- Infinite number of equivalence classes.
+
+---
+
+<!-- _header: Learn Finite State Automata and Visibly Pushdown Automata -->
+
+<center>
+
+<table id="vtable2" class="vtable">
+    <thead>
+        <tr>
+            <th scope="rowgroup" rowspan="2">Infix</th>
+            <th scope="rowgroup" colspan="4">Left Context, Right Context</th>
+        </tr>
+        <tr>
+            <th scope="col">ϵ, ϵ</th>
+            <th scope="col">ϵ, × 1</th>
+            <th scope="col">(, × 1)</th>
+        </tr>
+    </thead>
+    <tbody data-auto-animate="" data-id="box">
+        <tr>
+            <td>ϵ</td>
+            <td><invalid-in>ϵ</invalid-in></td>
+            <td><invalid-in>× 1</invalid-in></td>
+            <td><invalid-in>( × 1)</invalid-in></td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td><valid-in>1</valid-in></td>
+            <td><valid-in>1 × 1</valid-in></td>
+            <td><valid-in>(1 × 1)</valid-in></td>
+        </tr>
+        <tr>
+            <td>1 ×</td>
+            <td><invalid-in>1 ×</invalid-in></td>
+            <td><invalid-in>1 × × 1</invalid-in></td>
+            <td><invalid-in>(1 × × 1)</invalid-in></td>
+        </tr>
+        <tr>
+            <td>(1 × 1)</td>
+            <td><valid-in>(1 × 1)</valid-in></td>
+            <td><valid-in>(1 × 1) × 1</valid-in></td>
+            <td><valid-in>((1 × 1) × 1)</valid-in></td>
+        </tr>
+    </tbody>
+</table>
+
+</center>
+
+- Each infix must be well-matched.
+- The number of equivalence classes becomes finite.
 
 ---
 
