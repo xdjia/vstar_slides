@@ -331,20 +331,63 @@ $$
 
 <!-- _header: Learn Finite State Automata and Visibly Pushdown Automata -->
 
-Angluin's $L^*$ (1979): Learn Regular Grammars from MAT
-
-* Learn regular expressions
-* $\to$ Learn Finite State Automata (FSA) 
+* Learn regular expression
+  * Regular expression is equivalent to Finite State Automata (FSA)
+* $\to$ Learn FSA
+  * Each state in the automata is an equivalence class.
 * $\to$ Learn Equivalence Classes
-* $\to$ Fill out a table!
+* $\to$ Angluin's $L^*$ (1979): Fill a table!
 
 ---
 
 <!-- _header: Learn Finite State Automata and Visibly Pushdown Automata -->
 
-| String |     |
-| ------ | --- |
-|        |     |
+<table id="pre_suf_table" class="pre_suf_table">
+    <thead>
+        <tr>
+            <th scope="rowgroup" rowspan="2">Prefix</th>
+            <th scope="rowgroup" colspan="3">Suffix</th>
+        </tr>
+        <tr>
+            <th scope="col">ϵ</th>
+            <th scope="col">1</th>
+            <th scope="col">× 1</th>
+        </tr>
+    </thead>
+    <tbody data-auto-animate="" data-id="box">
+        <tr>
+            <td>ϵ</td>
+            <td><invalid-in>ϵ</invalid-in></td>
+            <td><valid-in>1</valid-in></td>
+            <td><invalid-in>× 1</invalid-in></td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td><valid-in>1</valid-in></td>
+            <td><valid-in>11</valid-in></td>
+            <td><valid-in>1 × 1</valid-in></td>
+        </tr>
+        <tr>
+            <td>1 ×</td>
+            <td><invalid-in>1 ×</invalid-in></td>
+            <td><valid-in>1 × 1</valid-in></td>
+            <td><invalid-in>1 × × 1</invalid-in></td>
+        </tr>
+        <tr>
+            <td>2 × 2</td>
+            <td><valid-in>2 × 2</valid-in></td>
+            <td><valid-in>2 × 21</valid-in></td>
+            <td><valid-in>2 × 2 × 1</valid-in></td>
+        </tr>
+        <tr>
+            <td>3 × 3 × 3</td>
+            <td><valid-in>3 × 3 × 3</valid-in></td>
+            <td><valid-in>3 × 3 × 31</valid-in></td>
+            <td><valid-in>3 × 3 × 3 × 1</valid-in></td>
+        </tr>
+    </tbody>
+</table>
+
 
 ---
 
