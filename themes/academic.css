@@ -34,37 +34,47 @@ section.lead h1 {
   color: #800000;
   text-align: left;
 }
+
 section.lead h1 strong {
   -webkit-text-stroke: 1px #800000;
 }
+
 section.lead h2 {
   color: #800000;
   text-align: left;
 }
+
 section.lead h2 strong {
   -webkit-text-stroke: 1px #800000;
 }
+
 section.lead h3 {
   color: #800000;
   text-align: left;
 }
+
 section.lead h3 strong {
   -webkit-text-stroke: 1px #800000;
 }
+
 section.lead h4 {
   color: #800000;
   text-align: left;
 }
+
 section.lead h4 strong {
   -webkit-text-stroke: 1px #800000;
 }
+
 section.lead h5 {
   color: #800000;
   text-align: left;
 }
+
 section.lead h5 strong {
   -webkit-text-stroke: 1px #800000;
 }
+
 section.lead p {
   text-align: right;
 }
@@ -83,9 +93,11 @@ blockquote {
   position: absolute;
   bottom: 20px;
 }
+
 blockquote::before {
   content: "";
 }
+
 blockquote::after {
   content: "";
 }
@@ -96,30 +108,43 @@ img[alt~="center"] {
 }
 
 
-
-call-sym, ret-sym, code {
+call-sym,
+ret-sym,
+code {
   font-family: 'Source Code Pro', monospace;
   margin: 0.2em 0.4em;
   border-radius: 3px;
-  color: #24292e; /* GitHub's default code color */
+  color: #24292e;
+  /* GitHub's default code color */
 }
 
 code {
-  background-color: #f6f8fa; /* GitHub's light background color */
+  background-color: #f6f8fa;
+  /* GitHub's light background color */
 }
 
 call-sym {
-  background-color: lightpink;
+  background-color: lightsalmon;
 }
 
 ret-sym {
+  background-color: lightblue;
+}
+
+valid-in {
   background-color: lightgreen;
+}
+
+invalid-in {
+  background-color: lightpink;
 }
 
 pre {
   font-family: 'Source Code Pro', monospace;
-  background-color: #f6f8fa; /* GitHub's light background color */
-  color: #24292e; /* GitHub's default code color */
+  background-color: #f6f8fa;
+  /* GitHub's light background color */
+  color: #24292e;
+  /* GitHub's default code color */
   border-radius: 6px;
   overflow: auto;
   box-shadow: inset 0 1px 0 #e1e4e8;
@@ -184,5 +209,3 @@ pre {
 .performance-table td.right-aligned {
   text-align: right;
 }
-
-

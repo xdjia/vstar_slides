@@ -289,6 +289,7 @@ $$
   ...
 
   `◻︎▼●`(`◻︎`)$^k$`▼●▼`(`△`)$^k$`●▼△`
+
 ---
 
 <!-- _header: V-Star Example: Arithmetic Formula -->
@@ -296,23 +297,54 @@ $$
 
 - From valid strings `◻︎▼●`(`◻︎`)$^k$`▼●▼`(`△`)$^k$`●▼△`, the nesting pattern is $(u,x,z,y,v)=$ (`◻︎▼●`, `◻︎`, `▼●▼`, `△`, `●▼△`), or simply 
   $$(x,y)=(◻, △)$$
-* **Lemma**: each nesting pattern $(x,y)$ must contain a call symbol in $x$, and a return symbol in $y$.
+* **Lemma (V-Star)**: each nesting pattern $(x,y)$ must contain a call symbol in $x$, and a return symbol in $y$.
 * Therefore, `◻︎` and `△` are the call and return symbols.
   <center>
   <code><call-sym>◻︎</call-sym>▼●<call-sym>◻︎</call-sym>▼●▼<ret-sym>△</ret-sym>●▼<ret-sym>△</ret-sym></code>
   </center>
 * **The tagging function**: For any program input, tags `◻︎` as call, and `△` as return symbols.
   <center>
-  <code><call-sym>◻︎</call-sym>▼●▼●▼<ret-sym>△</ret-sym>●▼</code>
+  <code><call-sym>◻︎</call-sym>▼●▼●▼<ret-sym>△</ret-sym>●▼</code>,
+  <code><call-sym>◻︎</call-sym>▼●▼</code>, ...
   </center>
 
 ---
 
-<!-- _header: V-Star Example: Arithmetic Formula -->
+<!-- _header: Learn Finite State Automata and Visibly Pushdown Automata -->
 
-### Learn VPA
+<center>
 
+| Input                        |
+| ---------------------------- |
+| <valid-in>1</valid-in>       |
+| <invalid-in>1×</invalid-in>  |
+| <valid-in>1×1</valid-in>     |
+| <valid-in>1×1×1</valid-in>   |
+| <valid-in>1×1×1×1</valid-in> |
 
+</center>
+
+* Conjecture: regular expression $($`1×`$)^*$`1` specifies valid inputs.
+* 🎉 You have learned the first grammar!
+
+---
+
+<!-- _header: Learn Finite State Automata and Visibly Pushdown Automata -->
+
+Angluin's $L^*$ (1979): Learn Regular Grammars from MAT
+
+* Learn regular expressions
+* $\to$ Learn Finite State Automata (FSA) 
+* $\to$ Learn Equivalence Classes
+* $\to$ Fill out a table!
+
+---
+
+<!-- _header: Learn Finite State Automata and Visibly Pushdown Automata -->
+
+| String |     |
+| ------ | --- |
+|        |     |
 
 ---
 
@@ -324,104 +356,21 @@ $$
 
 - **Selected Grammars**
   - Five Grammars: JSON, LISP, XML, While, MathExpr
-  - Chosen for their distinct characteristics as Visibly Pushdown Grammars (VPGs).
+  - Chosen because they are VPGs
 
 > Further exploration of additional program inputs is reserved for future research.
 
 ---
 
-<!-- paginate: false -->
 <!-- _header: Evaluation: Accuracy -->
 
-<table class="metrics-table" id="metricsTable" style="font-size:x-large">
-  <thead>
-    <tr>
-      <th>Metric</th>
-      <th>Definition</th>
-      <th>Explanation</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Recall</strong></td>
-      <td><math display="block" class="tml-display" style="display:block math;">
-  <mfrac>
-    <mrow>
-      <mi>|</mi>
-      <msub>
-        <mi>L</mi>
-        <mi class="mathcal">𝒪</mi>
-      </msub>
-      <mo>∩</mo>
-      <msub>
-        <mi>L</mi>
-        <mi>G</mi>
-      </msub>
-      <mi>|</mi>
-    </mrow>
-    <mrow>
-      <mi>|</mi>
-      <msub>
-        <mi>L</mi>
-        <mi class="mathcal">𝒪</mi>
-      </msub>
-      <mi>|</mi>
-    </mrow>
-  </mfrac>
-</math></td>
-      <td>Probability that a string of the oracle is in the learned grammar <math><mi>G</mi></math>.</td>
-    </tr>
-    <tr>
-      <td><strong>Precision</strong></td>
-      <td><math display="block" class="tml-display" style="display:block math;">
-  <mfrac>
-    <mrow>
-      <mi>|</mi>
-      <msub>
-        <mi>L</mi>
-        <mi class="mathcal">𝒪</mi>
-      </msub>
-      <mo>∩</mo>
-      <msub>
-        <mi>L</mi>
-        <mi>G</mi>
-      </msub>
-      <mi>|</mi>
-    </mrow>
-    <mrow>
-      <mi>|</mi>
-      <msub>
-        <mi>L</mi>
-        <mi>G</mi>
-      </msub>
-      <mi>|</mi>
-    </mrow>
-  </mfrac>
-</math></td>
-      <td>Probability that a string in <math><mi>G</mi></math> is accepted by the oracle.</td>
-    </tr>
-    <tr>
-      <td><strong>F-1 Score</strong></td>
-      <td><math display="block" class="tml-display" style="display:block math;">
-  <mfrac>
-    <mn>2</mn>
-    <mrow>
-      <mfrac>
-        <mn>1</mn>
-        <mi>R</mi>
-      </mfrac>
-      <mo>+</mo>
-      <mfrac>
-        <mn>1</mn>
-        <mi>P</mi>
-      </mfrac>
-    </mrow>
-  </mfrac>
-</math></td>
-      <td>Harmonic mean of precision and recall, indicating overall accuracy.</td>
-    </tr>
-  </tbody>
-</table>
+<div style="font-size:x-large">
+
+- **Recall** $\frac{|L\cap L_\mathcal{O}|}{|L|}$: Probability that a string of the oracle is accepted by the learned grammar $G$.
+- **Precision** $\frac{|L\cap L_\mathcal{O}|}{|L_\mathcal{O}|}$: Probability that a string in $G$ is accepted by the oracle.
+- **F-1 Score** $\frac{2}{1/\text{recall}+1/\text{prec}}$:Harmonic mean of precision and recall, indicating overall accuracy.
+
+</div>
 
 <table class="performance-table" id="performanceTable" style="font-size:x-large">
   <!-- <caption>Accuracy Comparison</caption> -->
@@ -512,22 +461,13 @@ $$
 
 <!-- _header: Evaluation: Efficiency -->
 
-<table class="metrics-table" id="metricsTable" style="font-size:x-large">
-  <thead>
-    <tr>
-      <th>Metric</th>
-      <th>Explanation</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>#Queries</strong></td>
-      <td>The number of unique membership queries made during the learning process. <br> When the same string is queried for multiple times, we use the cached results.</td>
-    </tr>
-    <tr> <td><strong>Time</strong></td> <td>The overall running time for each tool.</td> </tr> 
-    <tr> <td><strong>#Seeds</strong></td> <td>The number of seed strings (i.e., valid strings) shared by all tools.</td> </tr> 
-  </tbody>
-</table>
+<div style="font-size:x-large">
+
+- **#Queries**: The number of unique membership queries made during the learning process.
+- **Time**: The overall running time for each tool.
+- **#Seeds**: The number of seed strings (i.e., valid strings) shared by all tools.
+
+</div>
 
 <table class="evaluation-table" id="evaluationTable" style="font-size:x-large">
   <!-- <caption>Efficiency Comparison</caption> -->
@@ -607,25 +547,13 @@ $$
 
 <!-- _header: Evaluation: More Statistics of V-Star -->
 
-<table class="metrics-table" id="metricsTable" style="font-size:x-large">
-  <thead>
-    <tr>
-      <th>Metric</th>
-      <th>Explanation</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>%Queries(Token)</strong></td>
-      <td>Percentage of membership queries made for token inference.</td>
-    </tr>
-    <tr>
-      <td><strong>%Queries(VPA)</strong></td>
-      <td>Percentage of membership queries made for VPA learning.</td>
-    </tr>
-    <tr> <td><strong>#TestString</strong></td> <td>The number of test strings sampled from the seed strings by V-Star.</td> </tr> 
-  </tbody>
-</table>
+<div style="font-size:x-large">
+
+- **%Queries(Token)**: Percentage of membership queries made for token inference.
+- **%Queries(VPA)**: Percentage of membership queries made for VPA learning.
+- **#TestString**: The number of test strings sampled from the seed strings by V-Star.
+
+</div>
 
 <table class="performance-table" id="performanceTable" style="font-size:x-large" style="font-size:x-large">
   <thead>
@@ -682,18 +610,21 @@ $$
   </tbody>
 </table>
 
-Most queries and time are cost by VPA Learning, except for XML.
+<div style="font-size:xx-large">
+
+Most time is spent on VPA learning, not token inference, as short seed strings lead to shorter nesting patterns and a smaller search space.
+</div>
 
 ---
 
-<!-- paginate: true -->
-
 <!-- _header: Conclusion and Future Work -->
 
-- V-Star is quite accurate compared with other tools, but costs much more time. Most time is cost in VPA learning, not token inference, mainly because the seed strings tend to be short, leading to shorter nesting patterns and less search space. 
-- Future research directions
-  - Improve the performance of V-Star.
-  - Evalute on more practical grammars.
-  - Explore other VPA learning algorithm (e.g., discrimination trees).
-  - Improve the readablility of the learned grammar.
-  - Use V-Star as a starting point of CFG learning.
+- **Conclusion**: V-Star is accurate compared to other tools but requires more time due to VPA learning.
+
+- **Future Work**:
+  - **Performance**: Improve V-Star's efficiency to reduce VPA learning time.
+  - **Evaluation**: Test V-Star on more practical grammars.
+  - **Alternative Algorithms**: Explore other VPA learning methods.
+  - **Readability**: Enhance the readability of the learned grammar.
+  - **CFG Learning**: Use V-Star as a starting point for learning Context-Free Grammars.
+
