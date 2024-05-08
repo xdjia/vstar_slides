@@ -95,12 +95,25 @@ img[alt~="center"] {
   margin: 0 auto;
 }
 
-code {
+
+
+call-sym, ret-sym, code {
   font-family: 'Source Code Pro', monospace;
-  background-color: #f6f8fa; /* GitHub's light background color */
-  color: #24292e; /* GitHub's default code color */
-  padding: 0.2em 0.4em;
+  margin: 0.2em 0.4em;
   border-radius: 3px;
+  color: #24292e; /* GitHub's default code color */
+}
+
+code {
+  background-color: #f6f8fa; /* GitHub's light background color */
+}
+
+call-sym {
+  background-color: lightpink;
+}
+
+ret-sym {
+  background-color: lightgreen;
 }
 
 pre {
@@ -171,3 +184,5 @@ pre {
 .performance-table td.right-aligned {
   text-align: right;
 }
+
+

@@ -1,0 +1,1 @@
+marp slides.md -o index.html --theme academia --theme-set ./themes --html

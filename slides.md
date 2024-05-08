@@ -45,15 +45,16 @@ Presented at NJPLS **2024**
 
 ### Program Input Learning
 
-Infer grammars of input from **black-box programs** and **sample inputs**, such as:
-  * Valid formulas of a calculator
-  * JSON/XML from JSON/XML parser binaries
-  * HTTP requests from a web server
+Infer grammars of input from **black-box programs** and **sample valid inputs**.
+* **Oracle**: The black-box program
+  * A calculator
+  * JSON/XML parser binaries
+  * Web server that accepts HTTP requests
+* **Seed Strings**: Given valid inputs
 
 <div>
 
-* **Oracle**: The black-box program
-* **Seed Strings**: The sample inputs
+
   
 </div>
 
@@ -145,8 +146,8 @@ Infer grammars of input from **black-box programs** and **sample inputs**, such 
 ### Nesting Structures
 
 ```
-program input:       <p>        Hello    </p>        World!
-tokenization :       OPEN_TAG   TEXT     CLOSE_TAG   TEXT
+Program input :  <p>        Hello    </p>        World!
+Tokenization  :  OPEN_TAG   TEXT     CLOSE_TAG   TEXT
 ```
 
 Recursion is delimited by special paired symbols, namely 
@@ -190,6 +191,24 @@ $$
 
 <!-- _header: Background -->
 
+
+### Denote Sentences of VPGs
+
+- Sentences in VPGs are normal strings with explicitly denoted call and return symbols, known as *tagging*.
+
+<center style="font-size: xx-large;">
+
+<code><call-sym>&lt;p&gt;</call-sym>Hello<ret-sym>&lt;/p&gt;</ret-sym>World!</code>
+
+</center>
+
+- **V-Star** learns which substrings need to be colorized, also known as the *tagging function* for program inputs.
+
+
+---
+
+<!-- _header: Background -->
+
 #### From Program Input Learning to Active Learning
 
 * **Oracle**: Answers *membership queries*
@@ -207,13 +226,13 @@ $$
 <center style="font-size:x-large">
 
 ## Exact Learning: Achievable?
-|                    |              Regular              |    VPG     |       CFG        |
-| ------------------ | :-------------------------------: | :--------: | :--------------: |
-| Positive Examples  |            Impossible             |            |                  |
-| Positive + Negative  |            NP-complete            |            |                  |
-| Membership Queries |          Very Likely NP           |            |                  |
-| **MQ + Seed Strings**  |    Very Likely NP                               |  (V-Star)  | (Glade & Arvada) |
-| **MAT (MQ + EQ)**               | Polynomial <br> (Angluin's $L^*$) | Polynomial |  Very Likely NP  |
+|                       |              Regular              |    VPG     |       CFG        |
+| --------------------- | :-------------------------------: | :--------: | :--------------: |
+| Positive Examples     |            Impossible             |            |                  |
+| Positive + Negative   |            NP-complete            |            |                  |
+| Membership Queries    |          Very Likely NP           |            |                  |
+| **MQ + Seed Strings** |          Very Likely NP           |  (V-Star)  | (Glade & Arvada) |
+| **MAT (MQ + EQ)**     | Polynomial <br> (Angluin's $L^*$) | Polynomial |  Very Likely NP  |
 
 </center>
 
@@ -226,55 +245,74 @@ $$
 
 <!-- _header: Key Contributions of V-Star -->
 
-- Infer lexical rules of call/return tokens based on *nesting patterns*.
-  - **Nesting Patterns**: Given a valid string $s=uxvyz$, where $u,x,v,y,z$ are substrings of $s$. Tuple $(u,x,v,y,z)$ (denoted as $(x,y)$ when $s$ is clear) is called a nesting pattern, iff
-    1. For each number $k>0$, string $ux^kvy^kz$ is also valid.
-    2. For numbers $k\neq j$ (both $\geq 0$), string $ux^kvy^jz$ is invalid.
-  - Examples
-    - ✔ `<p>Hello</p>World!` $\Longrightarrow$ $($`<p>`$)^k$`Hello`$($`</p>`$)^k$`World!`
-    - ✔ `{"a":1}` $\Longrightarrow$ $($`{"a":`$)^k$`1`$($`}`$)^k$
-    - ✘ `{"a":"b"}` $\Longrightarrow$ `{"`$($`a`$)^k$ `":"`$($`b`$)^j$`"}`
+### V-Star Workflow
+
+1. **Identify Call and Return Symbols**: 
+   - Use oracle and seed strings to infer nesting structures.
+   - Develop a *tagging function* to recognize call and return symbols.
+
+2. **Learn VPA and Convert to VPG**:
+   - Use an L*-like algorithm to learn a Visibly Pushdown Automaton (VPA).
+   - Convert the VPA into a Visibly Pushdown Grammar (VPG).
+
 
 ---
 
-<!-- _header: V-Star: Methodology -->
+<!-- _header: V-Star Example: Arithmetic Formula -->
 
-- Infer lexical rules of call/return tokens based on nesting patterns.
-  1. Seed string: `<p id="a">Hello</p>World!` 
-  2. Enumerate nesting patterns: (`<p id="a">`, `</p>`) 
-  3. Infer rules of call/return tokens: (`<p`$($`id="`$[$`a-z`$]^+$`"`$)^*$`>`, `</p>`) 
-  4. Partially tokenize all seed strings: 
-      `<p id="a">`, `H`,`e`,`l`,`l`,`o`, `</p>`, `W`,`o`,`r`,`l`,`d`,`!`
-  5. If the tokenization is *in-compatible* (e.g., not well-matched): 
-      Backtrack and enumerate other candidate call/return tokens.
-  6. If the tokenization is compatible: proceed and learn a VPA.
-- Now, the learned partial tokenizer converts the character-based sentences into token-based sentences, which form a VPL.
+#### Seed String:
 
----
+<center> <code>(1+(2×3)/4)</code> </center>
 
-<!-- _header: V-Star: Methodology -->
+#### What are the Call and Return Symbols?
 
-- Simulate the MAT.
-  - Membership queries are just running programs on given strings.
-  - Equivalence queries are seldom available in practice. 
-    - We simulate equivalence queries by sampling *test strings* based on seed strings.
-    - In particular, we construct a set of strings by combining prefixes, infixes, and suffixes of the seed strings; for each such string $s$, if the token list of $s$ is well-matched, we add it to a set of test strings.
-    - Each test string $s$ is then treated as a "counterexample" returned by equivalence queries; we compare the results of parsing the test string using the learned grammar and the membership queries; discrepency in results means $s$ is a true counterexample.
+* Hypothesize recursion as:
+  <center> <code>expr -> "(" expr ")" expr | number | ...</code> </center>
+* Therefore, `(` and `)` are the call and return symbols.
+  <center>
+  <code><call-sym>(</call-sym>1+<call-sym>(</call-sym>2×3<ret-sym>)</ret-sym>/4<ret-sym>)</ret-sym></code>
+  </center>
 
 ---
 
-<!-- _header: V-Star: Methodology -->
+<!-- _header: V-Star Example: Arithmetic Formula -->
 
-- Learning the VPA based on the tokens.
-  - Each symbol of the VPA is either a character, meaning a plain symbol, or a call or return token.
-      `<p id="a">`, `H`,`e`,`l`,`l`,`o`, `</p>`, `W`,`o`,`r`,`l`,`d`,`!`
-  - Details on the VPA learning algorithm can be found in the paper.
-- Convert the VPA into a VPG.
-  - While standard conversion algorithm exists, the resulted VPG is not quite readable, because
-    - The forms of VPG rules are rigid.
-    - The grammar consists of lexical rules.
-    - The automatically named nonterminals lack semantic meaning.
-  - Future work: Improve the readablility.
+#### Seed String (Encrypted):
+<center><code>◻︎▼●◻︎▼●▼△●▼△</code></center>
+
+#### What are the Call and Return Symbols?
+
+- **Nesting Patterns**: Two substrings $(x, y)$ that can be repeated at the same time, and must be repeated at the same time.
+  <center><code>◻︎▼●◻︎▼●▼△●▼△</code> <center>
+  <center><code>◻▼●◻︎◻︎▼●▼△△●▼△</code> <center>
+  <center><code>◻▼●◻︎◻︎◻︎▼●▼△△△●▼△</code> <center>
+  ...
+
+  `◻︎▼●`(`◻︎`)$^k$`▼●▼`(`△`)$^k$`●▼△`
+---
+
+<!-- _header: V-Star Example: Arithmetic Formula -->
+
+
+- From valid strings `◻︎▼●`(`◻︎`)$^k$`▼●▼`(`△`)$^k$`●▼△`, the nesting pattern is $(u,x,z,y,v)=$ (`◻︎▼●`, `◻︎`, `▼●▼`, `△`, `●▼△`), or simply 
+  $$(x,y)=(◻, △)$$
+* **Lemma**: each nesting pattern $(x,y)$ must contain a call symbol in $x$, and a return symbol in $y$.
+* Therefore, `◻︎` and `△` are the call and return symbols.
+  <center>
+  <code><call-sym>◻︎</call-sym>▼●<call-sym>◻︎</call-sym>▼●▼<ret-sym>△</ret-sym>●▼<ret-sym>△</ret-sym></code>
+  </center>
+* **The tagging function**: For any program input, tags `◻︎` as call, and `△` as return symbols.
+  <center>
+  <code><call-sym>◻︎</call-sym>▼●▼●▼<ret-sym>△</ret-sym>●▼</code>
+  </center>
+
+---
+
+<!-- _header: V-Star Example: Arithmetic Formula -->
+
+### Learn VPA
+
+
 
 ---
 
@@ -659,19 +697,3 @@ Most queries and time are cost by VPA Learning, except for XML.
   - Explore other VPA learning algorithm (e.g., discrimination trees).
   - Improve the readablility of the learned grammar.
   - Use V-Star as a starting point of CFG learning.
-
----
-
-<!-- paginate: False -->
-
-<!-- _header: Appendix -->
-
-- What's not a VPG:
-  - $L\to cLcL\mid c$: symbol $c$ is call, plain, and return at the same time.
-- A VPG derives a *Visibly Pushdown Language* (VPL).
-- A VPG is accepted by a *Visibly Pushdown Automaton* (VPA).
-- Expressiveness of VPGs:
-  <center>
-    Regular Grammar < VPGs < CFGs
-  </center>
-- Still, VPGs can model many useful practical grammars.
