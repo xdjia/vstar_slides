@@ -29,7 +29,6 @@ Presented at NJPLS **2024**
 
 - Background
 - Key Contributions of V-Star
-- Further Information
 - Evaluation
 - Future Work
 
@@ -590,11 +589,11 @@ $$
 
 <center>
 
-<table id="vtable" class="vtable">
+<table id="vtable" class="vtable" style="font-size:xx-large">
     <thead>
         <tr>
             <th scope="rowgroup" rowspan="2">Prefix</th>
-            <th scope="rowgroup" colspan="5">Suffix</th>
+            <th scope="rowgroup" colspan="6">Suffix</th>
         </tr>
         <tr>
             <th scope="col">ϵ</th>
@@ -602,6 +601,7 @@ $$
             <th scope="col">×1)×1)</th>
             <th scope="col">...</th>
             <th scope="col">×1)...×1)</th>
+            <th scope="col">...</th>
         </tr>
     </thead>
     <tbody data-auto-animate="" data-id="box">
@@ -612,6 +612,7 @@ $$
             <td><invalid-in>×1) ×1)</invalid-in></td>
             <td>...</td>
             <td><invalid-in>×1) ×1) ×1)</invalid-in></td>
+            <td>...</td>
         </tr>
         <tr>
             <td>(1</td>
@@ -620,6 +621,7 @@ $$
             <td><invalid-in>(1 ×1) ×1)</invalid-in></td>
             <td>...</td>
             <td><invalid-in>(1 ×1) ×1) ×1)</invalid-in></td>
+            <td>...</td>
         </tr>
         <tr>
             <td>((1</td>
@@ -628,6 +630,7 @@ $$
             <td><valid-in>((1 ×1) ×1)</valid-in></td>
             <td>...</td>
             <td><invalid-in>((1 ×1) ×1) ×1)</invalid-in></td>
+            <td>...</td>
         </tr>
         <tr>
             <td>...</td>
@@ -636,6 +639,7 @@ $$
             <td> ... </td>
             <td> ... </td>
             <td> ... </td>
+            <td>...</td>
         </tr>
         <tr>
             <td>(...(1</td>
@@ -644,6 +648,16 @@ $$
             <td><invalid-in>(((1 ×1) ×1)</invalid-in></td>
             <td>...</td>
             <td><valid-in>(...(1 ×1) ... ×1)</valid-in></td>
+            <td>...</td>
+        </tr>
+                <tr>
+            <td>...</td>
+            <td> ... </td>
+            <td> ... </td>
+            <td> ... </td>
+            <td> ... </td>
+            <td> ... </td>
+            <td>...</td>
         </tr>
     </tbody>
 </table>
@@ -705,6 +719,21 @@ $$
 
 ---
 
+<!-- _header: More Info in the Paper -->
+
+- **Hierarchy**:
+  - Regular Grammar < VPGs < CFGs
+- **Formal Definition of VPGs and VPA**
+- **Conversions and Learning**:
+  - From Finite State Automata (FSA) to Visibly Pushdown Automata (VPA)
+  - How to identify nesting structures using nesting patterns
+  - How to learn Visibly Pushdown Automata (VPA)
+- **Partial Tokenizer**:
+  - What is it?
+  - How does it help?
+
+---
+
 <!-- _header: Evaluation Overview -->
 
 - **Evaluation Methodology**
@@ -725,7 +754,7 @@ $$
 
 - **Recall** $\frac{|L\cap L_\mathcal{O}|}{|L|}$: Probability that a string of the oracle is accepted by the learned grammar $G$.
 - **Precision** $\frac{|L\cap L_\mathcal{O}|}{|L_\mathcal{O}|}$: Probability that a string in $G$ is accepted by the oracle.
-- **F-1 Score** $\frac{2}{1/\text{recall}+1/\text{prec}}$:Harmonic mean of precision and recall, indicating overall accuracy.
+- **F-1 Score** $\frac{2}{1/\text{recall}+1/\text{prec}}$: Harmonic mean of precision and recall, indicating overall accuracy.
 
 </div>
 
@@ -976,7 +1005,7 @@ Most time is spent on VPA learning, not token inference, as short seed strings l
 
 <!-- _header: Conclusion and Future Work -->
 
-- **Conclusion**: V-Star is accurate compared to other tools but requires more time due to VPA learning.
+- **Conclusion**: V-Star is more accurate compared to other tools but requires more time due to VPA learning.
 
 - **Future Work**:
   - **Performance**: Improve V-Star's efficiency to reduce VPA learning time.
