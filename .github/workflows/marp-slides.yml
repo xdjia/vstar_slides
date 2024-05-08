@@ -1,0 +1,34 @@
+name: Marp Slide Generator
+
+on:
+  push:
+    branches:
+      - main  # Adjust this branch name as needed
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      - name: Install Marp CLI
+        run: npm install -g @marp-team/marp-cli
+
+      - name: Generate HTML slides
+        run: marp slides.md -o index.html --theme academic.css
+
+      - name: Copy theme CSS
+        run: cp academic.css ./academic.css
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./  # You can specify a different directory if needed
