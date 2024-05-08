@@ -1,1 +1,0 @@
-View the slides [here](https://xdjia.github.io/vstar_slides/).
