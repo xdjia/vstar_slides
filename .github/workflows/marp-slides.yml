@@ -13,19 +13,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: Marp Build
+        uses: docker://marpteam/marp-cli:v1.7.0
         with:
-          node-version: '18'
-
-      - name: Install Marp CLI
-        run: npm install -g @marp-team/marp-cli
-
-      - name: Generate HTML slides
-        run: marp slides.md -o index.html --theme academic.css
-
-      - name: Copy theme CSS
-        run: cp academic.css ./academic.css
+          args: slides.md -o index.html --theme academic.css
+        env:
+          MARP_USER: root:root
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
