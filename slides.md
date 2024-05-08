@@ -342,6 +342,10 @@ $$
 
 <!-- _header: Learn Finite State Automata and Visibly Pushdown Automata -->
 
+#### Fill the Prefix-Suffix Table
+
+<center>
+
 <table id="pre_suf_table" class="pre_suf_table">
     <thead>
         <tr>
@@ -374,19 +378,196 @@ $$
             <td><invalid-in>1 × × 1</invalid-in></td>
         </tr>
         <tr>
-            <td>2 × 2</td>
-            <td><valid-in>2 × 2</valid-in></td>
-            <td><valid-in>2 × 21</valid-in></td>
-            <td><valid-in>2 × 2 × 1</valid-in></td>
+            <td>1 × 1</td>
+            <td><valid-in>1 × 1</valid-in></td>
+            <td><valid-in>1 × 21</valid-in></td>
+            <td><valid-in>1 × 1 × 1</valid-in></td>
         </tr>
         <tr>
-            <td>3 × 3 × 3</td>
-            <td><valid-in>3 × 3 × 3</valid-in></td>
-            <td><valid-in>3 × 3 × 31</valid-in></td>
-            <td><valid-in>3 × 3 × 3 × 1</valid-in></td>
+            <td>1 × 1 × 1</td>
+            <td><valid-in>1 × 1 × 1</valid-in></td>
+            <td><valid-in>1 × 1 × 11</valid-in></td>
+            <td><valid-in>1 × 1 × 1 × 1</valid-in></td>
         </tr>
     </tbody>
 </table>
+
+</center>
+
+---
+
+<!-- _header: Learn Finite State Automata and Visibly Pushdown Automata -->
+
+#### Fill the Prefix-Suffix Table
+
+<center>
+
+<table id="pre_suf_table2" class="pre_suf_table">
+    <thead>
+        <tr>
+            <th scope="rowgroup" rowspan="2">Prefix</th>
+            <th scope="rowgroup" colspan="3">Suffix</th>
+        </tr>
+        <tr>
+            <th scope="col">ϵ</th>
+            <th scope="col">1</th>
+            <th scope="col">× 1</th>
+        </tr>
+    </thead>
+    <tbody data-auto-animate="" data-id="box">
+        <tr>
+            <td>ϵ</td>
+            <td><invalid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</invalid-in></td>
+            <td><valid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</valid-in></td>
+            <td><invalid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</invalid-in></td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td><valid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</valid-in></td>
+            <td><valid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</valid-in></td>
+            <td><valid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</valid-in></td>
+        </tr>
+        <tr>
+            <td>1 ×</td>
+            <td><invalid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</invalid-in></td>
+            <td><valid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</valid-in></td>
+            <td><invalid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</invalid-in></td>
+        </tr>
+        <tr>
+            <td>1 × 1</td>
+            <td><valid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</valid-in></td>
+            <td><valid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</valid-in></td>
+            <td><valid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</valid-in></td>
+        </tr>
+        <tr>
+            <td>1 × 1 × 1</td>
+            <td><valid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</valid-in></td>
+            <td><valid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</valid-in></td>
+            <td><valid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</valid-in></td>
+        </tr>
+    </tbody>
+</table>
+
+</center>
+
+* The color sequences becomes the equivalence classes.
+
+---
+
+<!-- _header: Learn Finite State Automata and Visibly Pushdown Automata -->
+
+#### Fill the Prefix-Suffix Table
+
+<center>
+
+<table id="pre_suf_table2" class="pre_suf_table">
+    <thead>
+        <tr>
+            <th scope="rowgroup" rowspan="2">Prefix</th>
+            <th scope="rowgroup" colspan="3">Suffix</th>
+        </tr>
+        <tr>
+            <th scope="col">ϵ</th>
+            <th scope="col">1</th>
+            <th scope="col">× 1</th>
+        </tr>
+    </thead>
+    <tbody data-auto-animate="" data-id="box">
+        <tr>
+            <td>ϵ</td>
+            <td><invalid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</invalid-in></td>
+            <td><valid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</valid-in></td>
+            <td><invalid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</invalid-in></td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>1 ×</td>
+            <td><invalid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</invalid-in></td>
+            <td><valid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</valid-in></td>
+            <td><invalid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</invalid-in></td>
+        </tr>
+        <tr>
+            <td>1 × 1</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>1 × 1 × 1</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+    </tbody>
+</table>
+
+</center>
+
+- `ε` is equivalent to `1 ×`.
+
+---
+
+<!-- _header: Learn Finite State Automata and Visibly Pushdown Automata -->
+
+#### Fill the Prefix-Suffix Table
+
+<center>
+
+<table id="pre_suf_table2" class="pre_suf_table">
+    <thead>
+        <tr>
+            <th scope="rowgroup" rowspan="2">Prefix</th>
+            <th scope="rowgroup" colspan="3">Suffix</th>
+        </tr>
+        <tr>
+            <th scope="col">ϵ</th>
+            <th scope="col">1</th>
+            <th scope="col">× 1</th>
+        </tr>
+    </thead>
+    <tbody data-auto-animate="" data-id="box">
+          <tr>
+            <td>ϵ</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td><valid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</valid-in></td>
+            <td><valid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</valid-in></td>
+            <td><valid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</valid-in></td>
+        </tr>
+        </tr>
+        <tr>
+            <td>1 ×</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>1 × 1</td>
+            <td><valid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</valid-in></td>
+            <td><valid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</valid-in></td>
+            <td><valid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</valid-in></td>
+        </tr>
+        <tr>
+            <td>1 × 1 × 1</td>
+            <td><valid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</valid-in></td>
+            <td><valid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</valid-in></td>
+            <td><valid-in>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</valid-in></td>
+        </tr>
+    </tbody>
+</table>
+
+</center>
+
+- `1` is equivalent to `1 × 1` and `1 × 1 × 1`.
 
 
 ---
