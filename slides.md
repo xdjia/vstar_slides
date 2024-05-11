@@ -20,7 +20,7 @@ math: mathjax
 **Xiaodong Jia*** and **Gang Tan**  
 Penn State University  
 Accepted by PLDI 2024
-Presented at NJPLS **2024**
+NJPLS 2024
 
 ---
 
@@ -44,7 +44,8 @@ Presented at NJPLS **2024**
 
 ### Program Input Learning
 
-Infer grammars of input from **black-box programs** and **sample valid inputs**.
+Infer formal grammars of inputs from 
+**black-box programs** and **sample valid inputs**.
 * **Oracle**: The black-box program
   * A calculator
   * JSON/XML parser binaries
@@ -52,8 +53,6 @@ Infer grammars of input from **black-box programs** and **sample valid inputs**.
 * **Seed Strings**: Given valid inputs
 
 <div>
-
-
   
 </div>
 
@@ -149,8 +148,38 @@ Program input :  <p>        Hello    </p>        World!
 Tokenization  :  OPEN_TAG   TEXT     CLOSE_TAG   TEXT
 ```
 
+<div data-marpit-fragment="1">
+
 Recursion is delimited by special paired symbols, namely 
-*call symbols* and *return symbols*
+*call symbols* and *return symbols*.
+
+</div>
+
+<div data-marpit-fragment="2">
+
+```
+     Recursion     
+ ┌───────────────┐ 
+XML -> OPEN_TAG XML CLOSE_TAG XML | TEXT | ε
+           ↑             ↑              
+          Call         Return        
+```
+
+</div>
+
+---
+
+<!-- _header: Background -->
+
+### Nesting Structures
+
+```
+Program input :  <p>        Hello    </p>        World!
+Tokenization  :  OPEN_TAG   TEXT     CLOSE_TAG   TEXT
+```
+
+Recursion is delimited by special paired symbols, namely 
+*call symbols* and *return symbols*.
 
 ```
      Recursion               Tail recursion does not count
@@ -281,6 +310,8 @@ $$
 
 #### What are the Call and Return Symbols?
 
+<div data-marpit-fragment="1">
+
 - **Nesting Patterns**: Two substrings $(x, y)$ that can be repeated at the same time, and must be repeated at the same time.
   <center><code>◻︎▼●◻︎▼●▼△●▼△</code> <center>
   <center><code>◻▼●◻︎◻︎▼●▼△△●▼△</code> <center>
@@ -288,6 +319,8 @@ $$
   ...
 
   `◻︎▼●`(`◻︎`)$^k$`▼●▼`(`△`)$^k$`●▼△`
+
+</div>
 
 ---
 
@@ -324,7 +357,7 @@ $$
 </center>
 
 * Conjecture: regular expression $($`1×`$)^*$`1` specifies valid inputs.
-* 🎉 You have learned the first grammar!
+* You have learned a formal grammar $🎉$
 
 ---
 
@@ -335,7 +368,7 @@ $$
 * $\to$ Learn FSA
   * Each state in the automata is an equivalence class.
 * $\to$ Learn Equivalence Classes
-  * $\to$ Angluin's $L^*$ (1979): There is a table-based method!
+  * $\to$ Angluin's $L^*$ (1987): There is a table-based method!
 
 ---
 
