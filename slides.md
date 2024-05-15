@@ -17,10 +17,9 @@ math: mathjax
 # V-Star: Learning Visibly Pushdown Grammars from Program Inputs
 <br>
 
-**Xiaodong Jia*** and **Gang Tan**  
-Penn State University  
-Accepted by PLDI 2024
-NJPLS 2024
+**Xiaodong Jia** and **Gang Tan**  
+Penn State University
+PLDI 2024
 
 ---
 
