@@ -63,13 +63,13 @@ Learn formal grammars of inputs from
 
 
 <!-- For PDF export -->
-![w:350](./figures/calculator.png)
+<!-- ![w:350](./figures/calculator.png) -->
 
 <!-- For HTML export -->
-<!-- <video controls autoplay width="300" height="400" poster="./figures/fallback-image.png">
+<video controls autoplay width="300" height="400" poster="./figures/fallback-image.png">
   <source src="./figures/calculator.mp4" type="video/mp4">
   Your browser does not support the video tag.
-</video> -->
+</video>
 
 </div>
 
