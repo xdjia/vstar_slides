@@ -28,6 +28,7 @@ PLDI 2024
 
 - Background
 - Key Contributions of V-Star
+- Running Example
 - Evaluation
 - Future Work
 
@@ -43,7 +44,7 @@ PLDI 2024
 
 ### Program Input Learning
 
-Infer formal grammars of inputs from 
+Learn formal grammars of inputs from 
 **black-box programs** and **sample valid inputs**.
 * **Oracle**: The black-box program
   * A calculator
@@ -60,10 +61,15 @@ Infer formal grammars of inputs from
 <!-- Right column for the image -->
 <div class="column" style="width:30%;">
 
-<video controls autoplay width="300" height="400">
+
+<!-- For PDF export -->
+![w:350](./figures/calculator.png)
+
+<!-- For HTML export -->
+<!-- <video controls autoplay width="300" height="400" poster="./figures/fallback-image.png">
   <source src="./figures/calculator.mp4" type="video/mp4">
   Your browser does not support the video tag.
-</video>
+</video> -->
 
 </div>
 
@@ -94,14 +100,14 @@ Infer formal grammars of inputs from
 </div>
 
 <!-- Right column for the image -->
-<div class="column" style="width:30%;">
+<!-- <div class="column" style="width:30%;">
 
 <video controls autoplay width="300" height="400">
   <source src="./figures/calculator.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
-</div>
+</div> -->
 
 </div>
 
