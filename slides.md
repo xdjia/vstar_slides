@@ -125,7 +125,7 @@ Learn formal grammars of inputs from
   - Glade (PLDI '17)
   - Arvada (ASE '22)
   - Learn context-free grammars
-* **Limitations:**
+* **Limitations**
   - Limited accuracy for many practical grammars
   - Do not fully utilize the *nesting structures* in program inputs
 
@@ -612,7 +612,7 @@ $$
 
 #### Build an FSA
 
-- The equivalence classes can be convert to an FSA directly.
+- The equivalence classes can be converted to an FSA directly.
 
 <div id="fsa" style="text-align:center;">
     <svg width="350" height="200"><defs><marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="black"></polygon></marker></defs><circle cx="100" cy="100" r="50" fill="white" stroke="black" class="state"></circle><text x="100" y="112.5" text-anchor="middle"><tspan>ε</tspan></text><circle cx="250" cy="100" r="50" fill="white" stroke="black" class="state"></circle><text x="250" y="112.5" text-anchor="middle"><tspan>1</tspan></text><circle cx="250" cy="100" r="46" fill="none" stroke="black"></circle><line x1="0" y1="100" x2="50" y2="100" stroke="black" marker-end="url(#arrowhead)" text-anchor="hehe"></line><text x="25" y="100" dy="-10" text-anchor="middle"></text><line x1="143.30127018922195" y1="75" x2="206.69872981077805" y2="75" stroke="black" marker-end="url(#arrowhead)" text-anchor="hehe"></line><text x="175" y="75" dy="-10" text-anchor="middle">1</text><line x1="206.69872981077805" y1="125" x2="143.30127018922195" y2="125" stroke="black" marker-end="url(#arrowhead)" text-anchor="hehe"></line><text x="175" y="125" dy="30" text-anchor="middle">×</text></svg></div>
